@@ -1,0 +1,14 @@
+.element__emotion {
+    width: 22px;
+    height: 19px;
+    margin-top: 6px;
+    cursor: pointer;
+}
+
+.element__emotion:hover {
+    opacity: 0.5;
+}
+
+.element__emotion::before {
+    opacity: 1;
+}
