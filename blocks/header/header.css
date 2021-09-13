@@ -6,7 +6,7 @@
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
-    border-bottom-width: 1px; 
+    border-bottom-width: 1px;
     border-bottom-style: solid;
     border-bottom-color: #545454;
 }
@@ -29,7 +29,7 @@
 @media (max-width: 500px) {
     .header {
         min-width: 282px;
-        margin: 28px auto 42px ;
+        margin: 28px auto 42px;
         padding: 0 0 31px;
     }
 }
