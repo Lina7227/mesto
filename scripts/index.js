@@ -12,19 +12,15 @@ let inputCont = formElement.querySelector('.form__input-container');
 let nameInput = inputCont.querySelector('.form__item_name_input');
 let jobInput = inputCont.querySelector('.form__item_job_input');
 
-
 editButton.onclick = function(){
     editButton.classList.add('profile__edit-button_popup_opened');
     popup.setAttribute('style', 'display: flex');
-    console.log( editButton.classList);
     }
 
 closeButton.onclick = function(){ 
     editButton.classList.remove('profile__edit-button_popup_opened');
     popup.setAttribute('style', 'display: none');
-    console.log( editButton.classList);
 }
-
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
@@ -45,7 +41,6 @@ function formSubmitHandler (evt) {
     profile__subtitle.textContent = jobValue;
     editButton.classList.remove('profile__edit-button_popup_opened');
     popup.setAttribute('style', 'display: none');
-    console.log( editButton.classList);
 }
 
 
