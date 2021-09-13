@@ -13,13 +13,22 @@
 
 @media (max-width: 768px) {
     .header {
-        width: 700px;
-        padding: 0 0 0 40px;
+        max-width: 700px;
+        padding: 0 0 40px;
     }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 600px) {
     .header {
+        max-width: 600px;
+        padding: 0 0 36px;
+        margin: 30px auto 34px;
+    }
+}
+
+@media (max-width: 500px) {
+    .header {
+        min-width: 282px;
         margin: 28px auto 42px ;
         padding: 0 0 31px;
     }

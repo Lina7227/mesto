@@ -2,14 +2,19 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 336px;
-    margin: 0 250px 0 30px;
+    margin: 0 auto 0 30px;
     position: relative;
 }
 
-/* @media (min-width: 320px) {
+@media (max-width: 600px) {
     .profile__info {
-        width: 282px;
+        margin: 0 auto 0 15px;
+    }
+}
+
+@media (max-width: 500px) {
+    .profile__info {
+        min-width: 282px;
         margin: 0 auto;
     }
-} */
+}

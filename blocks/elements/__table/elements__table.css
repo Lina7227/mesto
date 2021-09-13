@@ -7,3 +7,12 @@
     grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
     gap: 17px;
 }
+
+@media (max-width: 768px) {
+    .elements__table {
+        grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+        gap: 20px;
+        margin: 0 auto;
+    }
+}
+

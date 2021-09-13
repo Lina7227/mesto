@@ -8,11 +8,18 @@
     text-align: left;
 }
 
-/* @media (min-width: 320px) {
+@media (max-width: 600px) {
+    .profile__title {
+        font-size: 32px;
+        line-height: 40px;
+    }
+}
+
+@media (max-width: 400px) {
     .profile__title {
         font-size: 27px;
         line-height: 33px;
         margin: 26px 0 14px;
         text-align: center;
     }
-} */
+}

@@ -1,10 +1,11 @@
 .profile__edit-button {
     width: 24px;
     height: 24px;
-    position: absolute;
+    /* position: absolute;
     top: 34px;
-    right: 0px;
+    right: 0px; */
     cursor: pointer;
+    margin: 15px 0 0 10px;
 }
 
 .profile__edit-button:hover {
@@ -12,11 +13,10 @@
 }
 
 
-/* @media (min-width: 320px) {
+@media (max-width: 500px) {
     .profile__edit-button {
         width: 18px;
         height: 18px;
-        top: 36px;
-        right: 18px;
+        margin: 36px 0 0 10px;
     }
-} */
+}

@@ -16,3 +16,10 @@
 .form__button:hover {
     opacity: 0.6;
 }
+
+@media (max-width: 400px) {
+    .form__button {
+        width: 238px;
+        height: 46px;
+    }
+}

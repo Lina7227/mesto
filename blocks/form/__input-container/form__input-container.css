@@ -5,3 +5,11 @@
     border: 0;
     text-align: center;
 }
+
+
+@media (max-width: 500px) {
+    .form__input-container {
+        width: 238px;
+        padding: 0 0 54px;
+    }
+}

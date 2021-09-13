@@ -1,6 +1,16 @@
 .popup__content {
     position: relative;
-    width: 470px;
-    height: 360px;
-    padding: 30px 0 0;
+    max-width: 520px;
+    height: 380px;
+    padding: 40px 0 0;
+    margin: 154px auto 0;
+}
+
+@media (max-width: 500px) {
+    .popup__content {
+        min-width: 282px;
+        height: 500px;
+        padding:  123px 0 0;
+        margin: 0 auto;
+    }
 }

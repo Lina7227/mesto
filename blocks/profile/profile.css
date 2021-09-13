@@ -7,16 +7,23 @@
     justify-content: flex-start;
 }
 
-/* @media (min-width: 768px) {
+@media (max-width: 768px) {
     .profile {
-        width: 700px;
+        max-width: 700px;
     }
 }
 
-@media (min-width: 320px) {
+@media (max-width: 600px) {
+    .profile {
+        max-width: 560px;
+    }
+}
+
+@media (max-width: 500px) {
     .profile {
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        min-width: 320px;
     }
-} */
+}

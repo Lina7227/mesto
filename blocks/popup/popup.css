@@ -11,3 +11,11 @@
     z-index: 999;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
+
+@media (max-width: 500px) {
+    .popup {
+        justify-content: center;
+        align-items: baseline;
+    }
+}
+
