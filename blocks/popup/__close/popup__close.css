@@ -2,19 +2,26 @@
     width: 32px;
     height: 32px;
     position: absolute;
-    top: 0;
-    right: 0;
+    padding: 0;
+    top: -40px;
+    right: -40px;
     cursor: pointer;
+    background-color: rgba(0, 0, 0, .6);
+    background-image: url("../../../images/close_icon.svg");
+    background-size: 100% 100%;
+    border: none;
+
 }
 
 .popup__close:hover {
     opacity: 0.6;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     .popup__close {
         width: 20px;
         height: 20px;
-        top: 87px;
+        top: -36px;
+        right: 0;
     }
 }

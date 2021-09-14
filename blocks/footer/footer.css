@@ -2,6 +2,7 @@
     max-width: 880px;
     width: 100%;
     margin: 66px auto 60px;
+    padding: 0;
 }
 
 @media (max-width: 768px) {
@@ -19,7 +20,7 @@
 
 @media (max-width: 500px) {
     .footer {
-        min-width: 282px;
+        width: 282px;
         margin: 48px 19px 36px;
     }
 }

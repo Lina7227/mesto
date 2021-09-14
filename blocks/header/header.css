@@ -8,7 +8,7 @@
     flex-direction: column;
     border-bottom-width: 1px;
     border-bottom-style: solid;
-    border-bottom-color: #545454;
+    border-bottom-color: rgba(84, 84, 84, .7);
 }
 
 @media (max-width: 768px) {

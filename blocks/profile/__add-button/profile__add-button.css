@@ -3,17 +3,19 @@
     height: 50px;
     margin: 30px 0 0;
     padding: 0;
-    background-color: #000000;
+    background-color: inherit;
     border: 2px solid #FFFFFF;
-    background-image: url("../../../images/add_button.png");
+    border-radius: 2px;
+    background-image: url("../../../images/add_button.svg");
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
     text-align: left;
+    transition: 2s;
 }
 
 .profile__add-button:hover {
-    opacity: 0.5;
+    opacity: 0.6;
 }
 
 @media (max-width: 600px) {
