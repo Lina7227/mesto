@@ -20,12 +20,16 @@ let profileTitle = profileInfo.querySelector('.profile__title');
 let profileSubtitle = profileInfo.querySelector('.profile__subtitle');
 
 function popupToggle() {
-    popup.classList.toggle('popup_opened');
+    popup.classList.toggle('popup_opened'); // функция добавления/удаления модификатора
 }
-
 editButton.addEventListener('click', popupToggle);
 closeButton.addEventListener('click', popupToggle);
 
+function openPopupHandler() {
+    nameValue.textContent = profileTitle; // функция передачи данных из профиля в попап при его открытии
+    jobValue.textContent = profileSubtitle;
+}
+editButton.addEventListener('click', openPopupHandler)
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
@@ -35,11 +39,10 @@ function formSubmitHandler (evt) {
                                                 // О том, как это делать, расскажем позже.
     
     // Вставьте новые значения с помощью textContent
-    profileTitle.textContent = nameValue;
-    profileSubtitle.textContent = jobValue;
+    profileTitle.textContent = formElement.querySelector('.form__item_name_input').value;
+    profileSubtitle.textContent = formElement.querySelector('.form__item_job_input').value;
     popupToggle();
 }
-
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler);
