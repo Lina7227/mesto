@@ -12,6 +12,7 @@
 @media (max-width: 599px) {
     .elements {
         max-width: 310px;
+        margin: 36px auto 0;
     }
 }
 

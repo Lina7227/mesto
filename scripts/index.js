@@ -6,11 +6,10 @@ let closeButton = popup.querySelector('.popup__close');
 
 // Находим форму в DOM
 let formElement = document.querySelector('.form');
-let inputCont = formElement.querySelector('.form__input-container');
 
 // Находим поля формы в DOM
-let nameInput = formElement.querySelector('.form__item_name_input');
-let jobInput = formElement.querySelector('.form__item_job_input');
+let nameInput = formElement.querySelector('.form__item_input_name');
+let jobInput = formElement.querySelector('.form__item_input_job');
 
 let nameValue = nameInput.value; // Получите значение полей jobInput и nameInput из свойства value
 let jobValue = jobInput.value;
@@ -22,14 +21,6 @@ let profileSubtitle = profileInfo.querySelector('.profile__subtitle');
 function popupToggle() {
     popup.classList.toggle('popup_opened'); // функция добавления/удаления модификатора
 }
-editButton.addEventListener('click', popupToggle);
-closeButton.addEventListener('click', popupToggle);
-
-function openPopupHandler() {
-    nameValue.textContent = profileTitle; // функция передачи данных из профиля в попап при его открытии
-    jobValue.textContent = profileSubtitle;
-}
-editButton.addEventListener('click', openPopupHandler)
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
@@ -39,10 +30,15 @@ function formSubmitHandler (evt) {
                                                 // О том, как это делать, расскажем позже.
     
     // Вставьте новые значения с помощью textContent
-    profileTitle.textContent = formElement.querySelector('.form__item_name_input').value;
-    profileSubtitle.textContent = formElement.querySelector('.form__item_job_input').value;
+    nameValue = nameInput.value; // Если не прописывать эти две строки тут, то значения nameValue и jobValue не вставляются в профиль
+    jobValue = jobInput.value;
+    profileTitle.textContent = nameValue;
+    profileSubtitle.textContent = jobValue;
     popupToggle();
 }
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler);
+
+editButton.addEventListener('click', popupToggle);
+closeButton.addEventListener('click', popupToggle);

@@ -23,11 +23,12 @@
                 <div class="profile__info">
                     <div class="profile__edit">
                         <h1 class="profile__title">Жак-Ив Кусто</h1>
-                        <button type="button" class="profile__edit-button"></button> 
+                        <p class="profile__subtitle">Исследователь океана</p>
                     </div>
-                    <p class="profile__subtitle">Исследователь океана</p>
+                    
+                    <button type="button" aria-label="открыть попап" class="profile__edit-button"></button> 
                 </div>
-                <button type="button" class="profile__add-button"></button>
+                <button type="button" aria-label="открыть поле добавления фото" class="profile__add-button"></button>
             </section>  
 
             <section class="elements">
@@ -36,7 +37,7 @@
                         <img src="./images/kaliningrad.jpg" alt="Калининград.Балтийское море" class="element__image">
                         <div class="element__description">
                             <h2 class="element__title">Балтийское море</h2>
-                            <button type="button" class="element__emotion"></button>
+                            <button type="button" aria-label="оценить фото" class="element__emotion"></button>
                         </div>
                     </li>
 
@@ -44,7 +45,7 @@
                         <img src="./images/Fiolent.jpg" alt="Мыс Фиолент" class="element__image">
                         <div class="element__description">
                             <h2 class="element__title">Мыс Фиолент</h2>
-                            <button type="button" class="element__emotion"></button>
+                            <button type="button" aria-label="оценить фото" class="element__emotion"></button>
                         </div>
                     </li>
 
@@ -52,7 +53,7 @@
                         <img src="./images/ural_mountains.jpg" alt="Уральские горы" class="element__image">
                         <div class="element__description">
                             <h2 class="element__title">Уральские горы</h2>
-                            <button type="button" class="element__emotion"></button>
+                            <button type="button" aria-label="оценить фото" class="element__emotion"></button>
                         </div>
                     </li>
 
@@ -60,7 +61,7 @@
                         <img src="./images/perm.jpg" alt="Пермский край" class="element__image">
                         <div class="element__description">
                             <h2 class="element__title">Пермский край</h2>
-                            <button type="button" class="element__emotion"></button>
+                            <button type="button" aria-label="оценить фото" class="element__emotion"></button>
                         </div>
                     </li>
 
@@ -68,7 +69,7 @@
                         <img src="./images/Yalta.jpg" alt="Ялта" class="element__image">
                         <div class="element__description">
                             <h2 class="element__title">Ялта</h2>
-                            <button type="button" class="element__emotion"></button>
+                            <button type="button" aria-label="оценить фото" class="element__emotion"></button>
                         </div>
                     </li>
 
@@ -76,7 +77,7 @@
                         <img src="./images/solovki.jpg" alt="Соловецкие острова" class="element__image">
                         <div class="element__description">
                             <h2 class="element__title">Соловецкие острова</h2>
-                            <button type="button" class="element__emotion"></button>
+                            <button type="button" aria-label="оценить фото" class="element__emotion"></button>
                         </div>
                     </li>
                 </ul>
@@ -95,13 +96,13 @@
 
         <div class="popup__content">
             
-            <button type="button" class="popup__close"></button>
+            <button type="button" aria-label="закрыть попап" class="popup__close"></button>
             
             <form name="user" class="form">
                 <h2 class="form__title">Редактировать профиль</h2>
                 <fieldset class="form__input-container">
-                    <input type="text" class="form__item form__item_name_input" name="firstname" required placeholder="введите имя" value="Жак-Ив Кусто"> 
-                    <input type="text" class="form__item form__item_job_input" name="jobname" required placeholder="введите свою специальность" value="Исследователь океана">
+                    <input type="text" class="form__item form__item_input_name" name="firstname" required placeholder="введите имя" value="Жак-Ив Кусто"> 
+                    <input type="text" class="form__item form__item_input_job" name="jobname" required placeholder="введите свою специальность" value="Исследователь океана">
                 </fieldset>
                 <fieldset class="form__handler">
                     <input type="submit" class="form__button" value="Сохранить">
