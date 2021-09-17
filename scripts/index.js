@@ -30,8 +30,7 @@ function formSubmitHandler (evt) {
                                                 // О том, как это делать, расскажем позже.
     
     // Вставьте новые значения с помощью textContent
-    nameValue = nameInput.value; // Если не прописывать эти две строки тут, то значения nameValue и jobValue не вставляются в профиль
-    jobValue = jobInput.value;
+    
     profileTitle.textContent = nameValue;
     profileSubtitle.textContent = jobValue;
     popupToggle();
