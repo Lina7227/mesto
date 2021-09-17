@@ -11,15 +11,19 @@ let formElement = document.querySelector('.form');
 let nameInput = formElement.querySelector('.form__item_input_name');
 let jobInput = formElement.querySelector('.form__item_input_job');
 
-let nameValue = nameInput.value; // Получите значение полей jobInput и nameInput из свойства value
-let jobValue = jobInput.value;
+
 
 // Выберите элементы, куда должны быть вставлены значения полей
 let profileTitle = profileInfo.querySelector('.profile__title');
 let profileSubtitle = profileInfo.querySelector('.profile__subtitle');
 
+
 function popupToggle() {
-    popup.classList.toggle('popup_opened'); // функция добавления/удаления модификатора
+    popup.classList.toggle('popup_opened');
+    if (popup.classList.contains('popup_opened')) {
+        nameInput.value.textContent = profileTitle;
+        jobInput.value.textContent = profileSubtitle;
+    } 
 }
 
 // Обработчик «отправки» формы, хотя пока
@@ -28,7 +32,9 @@ function formSubmitHandler (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
                                                 // Так мы можем определить свою логику отправки.
                                                 // О том, как это делать, расскажем позже.
-    
+    // Получите значение полей jobInput и nameInput из свойства value
+    let nameValue = nameInput.value; 
+    let jobValue = jobInput.value;
     // Вставьте новые значения с помощью textContent
     
     profileTitle.textContent = nameValue;
@@ -39,5 +45,7 @@ function formSubmitHandler (evt) {
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler);
 
+// editButton.addEventListener('click', openPopupHandler);
 editButton.addEventListener('click', popupToggle);
+
 closeButton.addEventListener('click', popupToggle);
