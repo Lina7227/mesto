@@ -21,8 +21,8 @@ let profileSubtitle = profileInfo.querySelector('.profile__subtitle');
 function popupToggle() {
     popup.classList.toggle('popup_opened');
     if (popup.classList.contains('popup_opened')) {
-        nameInput.value.textContent = profileTitle;
-        jobInput.value.textContent = profileSubtitle;
+        nameInput.value = profileTitle.textContent;
+        jobInput.value = profileSubtitle.textContent;
     } 
 }
 
