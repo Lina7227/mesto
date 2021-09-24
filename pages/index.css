@@ -19,15 +19,18 @@
 @import url('../blocks/elements/__table/elements__table.css');
 
 @import url('../blocks/element/element.css');
+@import url('../blocks/element/__remove/element__remove.css');
 @import url('../blocks/element/__images/element__image.css');
 @import url('../blocks/element/__description/element__description.css');
 @import url('../blocks/element/__title/element__title.css');
 @import url('../blocks/element/__emotion/element__emotion.css');
+@import url('../blocks/element/__emotion/_active/element__emotion_active.css');
 
 @import url('../blocks/footer/footer.css');
 @import url('../blocks/footer/__copyright/footer__copyright.css');
 
 @import url('../blocks/popup/popup.css');
+@import url('../blocks/popup/__content/_edit/popup__content_edit.css');
 @import url('../blocks/popup/_opened/popup_opened.css');
 @import url('../blocks/popup/__content/popup__content.css');
 @import url('../blocks/popup/__close/popup__close.css');

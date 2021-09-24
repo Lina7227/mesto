@@ -33,8 +33,9 @@
 
             <section class="elements">
                 <ul class="elements__table">
-                    <li class="element">
+                    <!-- <li class="element">
                         <img src="./images/kaliningrad.jpg" alt="Калининград.Балтийское море" class="element__image">
+                        <button type="button" aria-label="удалить карточку" class="element__remove"></button>
                         <div class="element__description">
                             <h2 class="element__title">Балтийское море</h2>
                             <button type="button" aria-label="оценить фото" class="element__emotion"></button>
@@ -79,7 +80,7 @@
                             <h2 class="element__title">Соловецкие острова</h2>
                             <button type="button" aria-label="оценить фото" class="element__emotion"></button>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
 
             </section>
@@ -92,9 +93,9 @@
         
     </div>
     
-    <div class="popup">
+    <div class="popup popup_edit_profile">
 
-        <div class="popup__content">
+        <div class="popup__content popup__content_edit">
             
             <button type="button" aria-label="закрыть попап" class="popup__close"></button>
             
@@ -113,6 +114,41 @@
         </div>
         
     </div>
+
+    <div class="popup popup_edit_element">
+
+        <div class="popup__content popup__content_edit">
+            
+            <button type="button" aria-label="закрыть попап" class="popup__close"></button>
+            
+            <form name="user" class="form">
+                <h2 class="form__title">Новое место</h2>
+                <fieldset class="form__input-container">
+                    <input type="text" class="form__item form__item_input_title" name="title" required placeholder="Название"> 
+                    <input type="image" name="image" src="" class="form__item form__item_input_link"  required placeholder="Ссылка на картинку">
+                </fieldset>
+                <fieldset class="form__handler">
+                    <input type="submit" class="form__button" value="Создать">
+                </fieldset>
+
+            </form>
+            
+        </div>
+        
+    </div>
+
+    <template class="element-template">
+
+        <li class="element">
+            <img src="" alt="" class="element__image">
+            <button type="button" aria-label="удалить карточку" class="element__remove"></button>
+            <div class="element__description">
+                <h2 class="element__title"></h2>
+                <button type="button" aria-label="оценить фото" class="element__emotion"></button>
+            </div>
+        </li>
+
+    </template>
 
     <script src="./scripts/index.js"></script>
 
