@@ -17,53 +17,51 @@ const formImgElement = document.querySelector('.form__content_img'); // нахо
 
 const nameInput = formElement.querySelector('.form__item_input_name');
 const jobInput = formElement.querySelector('.form__item_input_job');
-// const titleInput = formImgElement.querySelector ('.form__item_input_title'); // находим инпуты в форме
-// const linkInput = formImgElement.querySelector ('.form__item_input_link');
-
 
 const profileTitle = profileInfo.querySelector('.profile__title');
 const profileSubtitle = profileInfo.querySelector('.profile__subtitle');
 
+const popupImgView = document.querySelector('.popup__image_view');
+const btnCloseImage = popupImgView.querySelector('.popup__close_image');
+const imgPopup = popupImgView.querySelector('.popup__image');
+const titlePopup = popupImgView.querySelector('.popup__title');
+
+
 const initialCards = [
   {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    name: 'Балтийское море',
+    link: 'https://images.unsplash.com/photo-1589876876491-df78ff60e196?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=764&q=80.jpg'
   },
   {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    name: 'Мыс Фиолент',
+    link: 'https://images.unsplash.com/photo-1591528848788-ffdfd2d40309?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1074&q=80.jpg'
   },
   {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    name: 'Уральские горы',
+    link: 'https://images.unsplash.com/photo-1566221880968-ad3da1d5fe84?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80.jpg'
   },
   {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    name: 'Пермский край',
+    link: 'https://images.unsplash.com/photo-1601274589050-e05871df86d9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1081&q=80.jpg'
   },
   {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    name: 'Ялта',
+    link: 'https://images.unsplash.com/photo-1564085892527-f072eb172a91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80.jpg'
   },
   {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    name: 'Соловецкие острова',
+    link: 'https://images.unsplash.com/photo-1615727551941-a8d55481a0b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80.jpg'
   }
 ];
-
 
 function addNewCardImg(evt) {
   evt.preventDefault();
 
   const titleInput = evt.currentTarget.querySelector ('.form__item_input_title').value; 
   const linkInput = evt.currentTarget.querySelector ('.form__item_input_link').value;
-  addCardImg({link: linkInput, name: titleInput});
-
-  const newInitialCards = {
-    name: titleInput,
-    link: linkInput
-  }
-
+  const newInitialCards = {name: titleInput,link: linkInput}
+  
+  addCardImg(newInitialCards);
   initialCards.push(newInitialCards);
 
   popupToggle(popupEditElement);
@@ -71,7 +69,7 @@ function addNewCardImg(evt) {
 }
 
 function likeElement(evt) {
-  evt.target.classList.toggle("element__emotion_active");
+  evt.target.classList.toggle('element__emotion_active');
 }
 
 function deleteButton(evt){
@@ -80,25 +78,19 @@ function deleteButton(evt){
 
 function addCardImg(item){
       const addElement = imgElementTemplate.content.cloneNode(true);
-      addElement.querySelector(".element__title").textContent = item.name;
-      addElement.querySelector(".element__image").src = item.link;
+
+      addElement.querySelector('.element__title').textContent = item.name;
+      addElement.querySelector('.element__image').src = item.link;
       addElement.querySelector('.element__emotion').addEventListener('click', likeElement);
       addElement.querySelector('.element__remove').addEventListener('click', deleteButton);
-      
-
       elementsTable.prepend(addElement);
 
-     
-    const element = elementsTable.querySelector('.element');
-    let imageOpen = element.querySelectorAll('.element__image');
+      const element = elementsTable.querySelector('.element');
+      const imageOpen = element.querySelector('.element__image');
 
-    imageOpen.forEach( function(el){
-      el.addEventListener('click', function(){
-        popupToggle(popupImgView)
-        console.log(imageOpen);
-      } )
-    }
-    );
+  imageOpen.addEventListener('click', function(){
+    popupToggle(popupImgView, item)
+  } )
 }
 
 
@@ -116,30 +108,16 @@ function formSubmitHandler (evt) {
 initialCards.map(addCardImg);
 
 
-const popupImgView = document.querySelector('.popup__image_view');
-const tabbleElement = elementsTable.querySelector('.element');
 
 
-const elementTitle = tabbleElement.querySelector('.element__title');
-const btnCloseImage = popupImgView.querySelector('.popup__close_image');
-const imgPopup = popupImgView.querySelector('.popup__image');
-const titlePopup = popupImgView.querySelector('.popup__title');
-const imageOpen = tabbleElement.querySelectorAll('.element__image');
-// const elements = document.querySelectorAll('.element');
-
-// console.log(imageOpen);
-
-
-
-function popupToggle(popup) {
+function popupToggle(popup, item = NaN) {
   popup.classList.toggle('popup_opened');
 
     if (popup.classList.contains('popup_opened')) {
         nameInput.value = profileTitle.textContent;
         jobInput.value = profileSubtitle.textContent;
-        titlePopup.value = elementTitle.textContent;
-        imgPopup.src = imageOpen.src;
-    
+        titlePopup.textContent = item.name;
+        imgPopup.src = item.link;
     } 
 }
 
@@ -149,17 +127,10 @@ editButton.addEventListener('click', () => popupToggle(popupEditProfile));
 closeButton.addEventListener('click', () => popupToggle(popupEditProfile));
 
 addButton.addEventListener('click', () => popupToggle(popupEditElement));
-// console.log(elements.length);
-
 
 btnCloseElement.addEventListener('click', () => popupToggle(popupEditElement));
 btnCloseImage.addEventListener('click', () => popupToggle(popupImgView))
 
 formElement.addEventListener('submit', formSubmitHandler);
 formImgElement.addEventListener("submit", addNewCardImg);
-
-
-
-
-
 
