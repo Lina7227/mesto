@@ -26,28 +26,28 @@ const profileSubtitle = profileInfo.querySelector('.profile__subtitle');
 
 const initialCards = [
   {
-    name: 'Балтийское море',
-    link: '../images/kaliningrad.jpg'
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
   {
-    name: 'Мыс Фиолент',
-    link: '../images/Fiolent.jpg'
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
   },
   {
-    name: 'Уральские горы',
-    link: '../images/ural_mountains.jpg'
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
   },
   {
-    name: 'Пермский край',
-    link: '../images/perm.jpg'
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
   },
   {
-    name: 'Ялта',
-    link: '../images/Yalta.jpg'
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
   },
   {
-    name: 'Соловецкие острова',
-    link: '../images/solovki.jpg'
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
 
