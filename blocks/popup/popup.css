@@ -10,7 +10,7 @@
     align-items: center;
     z-index: 999;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
-    transition: visibility 0s, opacity 0.4s linear;
+    transition: visibility .3s, opacity .3s linear;
     opacity: 0;
     visibility: hidden;
     

@@ -31,56 +31,10 @@
                 <button type="button" aria-label="открыть поле добавления фото" class="profile__add-button"></button>
             </section>  
 
+
             <section class="elements">
                 <ul class="elements__table">
-                    <!-- <li class="element">
-                        <img src="./images/kaliningrad.jpg" alt="Калининград.Балтийское море" class="element__image">
-                        <button type="button" aria-label="удалить карточку" class="element__remove"></button>
-                        <div class="element__description">
-                            <h2 class="element__title">Балтийское море</h2>
-                            <button type="button" aria-label="оценить фото" class="element__emotion"></button>
-                        </div>
-                    </li>
-
-                    <li class="element">
-                        <img src="./images/Fiolent.jpg" alt="Мыс Фиолент" class="element__image">
-                        <div class="element__description">
-                            <h2 class="element__title">Мыс Фиолент</h2>
-                            <button type="button" aria-label="оценить фото" class="element__emotion"></button>
-                        </div>
-                    </li>
-
-                    <li class="element">
-                        <img src="./images/ural_mountains.jpg" alt="Уральские горы" class="element__image">
-                        <div class="element__description">
-                            <h2 class="element__title">Уральские горы</h2>
-                            <button type="button" aria-label="оценить фото" class="element__emotion"></button>
-                        </div>
-                    </li>
-
-                    <li class="element">
-                        <img src="./images/perm.jpg" alt="Пермский край" class="element__image">
-                        <div class="element__description">
-                            <h2 class="element__title">Пермский край</h2>
-                            <button type="button" aria-label="оценить фото" class="element__emotion"></button>
-                        </div>
-                    </li>
-
-                    <li class="element">
-                        <img src="./images/Yalta.jpg" alt="Ялта" class="element__image">
-                        <div class="element__description">
-                            <h2 class="element__title">Ялта</h2>
-                            <button type="button" aria-label="оценить фото" class="element__emotion"></button>
-                        </div>
-                    </li>
-
-                    <li class="element">
-                        <img src="./images/solovki.jpg" alt="Соловецкие острова" class="element__image">
-                        <div class="element__description">
-                            <h2 class="element__title">Соловецкие острова</h2>
-                            <button type="button" aria-label="оценить фото" class="element__emotion"></button>
-                        </div>
-                    </li> -->
+                    
                 </ul>
 
             </section>
@@ -119,13 +73,13 @@
 
         <div class="popup__content popup__content_edit">
             
-            <button type="button" aria-label="закрыть попап" class="popup__close"></button>
+            <button type="button" aria-label="закрыть попап" class="popup__close popup__close_element"></button>
             
-            <form name="user" class="form">
+            <form name="user" class="form form__content_img">
                 <h2 class="form__title">Новое место</h2>
                 <fieldset class="form__input-container">
                     <input type="text" class="form__item form__item_input_title" name="title" required placeholder="Название"> 
-                    <input type="image" name="image" src="" class="form__item form__item_input_link"  required placeholder="Ссылка на картинку">
+                    <input type="text" class="form__item form__item_input_link" name="link" required placeholder="Ссылка на картинку">
                 </fieldset>
                 <fieldset class="form__handler">
                     <input type="submit" class="form__button" value="Создать">
@@ -137,10 +91,26 @@
         
     </div>
 
+    <div class="popup popup__image_view">
+
+        <div class="popup__content popup__content_image">
+            
+            <button type="button" aria-label="закрыть попап" class="popup__close popup__close_image"></button>
+            <figure>
+                <img src="" alt="Фото местности" class="popup__image">
+                <figcaption class="popup__title"></figcaption>
+            </figure>
+        </div>
+        
+    </div>
+
+
     <template class="element-template">
 
         <li class="element">
-            <img src="" alt="" class="element__image">
+
+            <img src="#" alt="Фото местности" class="element__image">
+            
             <button type="button" aria-label="удалить карточку" class="element__remove"></button>
             <div class="element__description">
                 <h2 class="element__title"></h2>
