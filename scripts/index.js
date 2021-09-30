@@ -12,7 +12,7 @@ const addButton = profile.querySelector('.profile__add-button');
 const elementsTable = document.querySelector('.elements__table');
 const imgElementTemplate = document.querySelector('.element-template');
 
-const formElement = document.querySelector('.form');
+const formElement = document.querySelector('.form__content_profile');
 const formImgElement = document.querySelector('.form__content_img'); // находим форму попапа редактировнаия картинок
 
 const nameInput = formElement.querySelector('.form__item_input_name');
@@ -54,52 +54,65 @@ const initialCards = [
   }
 ];
 
-function addNewCardImg(evt) {
-  evt.preventDefault();
+initialCards.reverse(); 
 
-  const titleInput = evt.currentTarget.querySelector ('.form__item_input_title').value; 
-  const linkInput = evt.currentTarget.querySelector ('.form__item_input_link').value;
-  const newInitialCards = {name: titleInput,link: linkInput}
-  
-  addCardImg(newInitialCards);
-  initialCards.push(newInitialCards);
-
-  popupToggle(popupEditElement);
-  evt.currentTarget.reset();
-}
-
+// функция лайков
 function likeElement(evt) {
   evt.target.classList.toggle('element__emotion_active');
 }
 
+// функция удаления
 function deleteButton(evt){
   evt.target.closest('.element').remove();
 }
 
-function addCardImg(item){
+// функция создания элементов (наполняет содержимым)
+function createCard(item){
       const addElement = imgElementTemplate.content.cloneNode(true);
 
       addElement.querySelector('.element__title').textContent = item.name;
       addElement.querySelector('.element__image').src = item.link;
       addElement.querySelector('.element__emotion').addEventListener('click', likeElement);
       addElement.querySelector('.element__remove').addEventListener('click', deleteButton);
-      elementsTable.prepend(addElement);
+      addElement.querySelector('.element__image').addEventListener('click', openPopupImg);
+      return(addElement)
 
-      const element = elementsTable.querySelector('.element');
-      const imageOpen = element.querySelector('.element__image');
-
-  imageOpen.addEventListener('click', function(){
-    popupToggle(popupImgView, item)
-  } )
 }
 
+// функция добавления карточки 
+function addCardImg(evt) {
+  const newCardImg = evt.map(createCard);
+  elementsTable.append(...newCardImg);
+  
+}
+addCardImg(initialCards);
 
-function formSubmitHandler (evt) {
+// функция открытия фотографии для просмотра 
+function openPopupImg (evt) {
+  popupToggle(popupImgView);
+
+  imgPopup.src = evt.target.src;
+  titlePopup.textContent = evt.currentTarget.parentElement.querySelector('.element__title').textContent;
+
+}
+
+// функция добавления фото из формы
+function addNewCardImg(evt) {
+  evt.preventDefault();
+
+  const titleInput = evt.currentTarget.querySelector ('.form__item_input_title').value; 
+  const linkInput = evt.currentTarget.querySelector ('.form__item_input_link').value;
+  const newInitialCards = createCard ({name: titleInput,link: linkInput});
+  
+  elementsTable.prepend(newInitialCards);
+
+  popupToggle(popupEditElement);
+  evt.currentTarget.reset();
+}
+
+// функция редактирования профиля
+function submitProfileForm (evt) {
     evt.preventDefault(); 
-
-    if (nameInput.value.length > 2){
-      console.log('123')
-    }
 
     const nameValue = nameInput.value; 
     const jobValue = jobInput.value;
@@ -109,25 +122,24 @@ function formSubmitHandler (evt) {
     popupToggle(popupEditProfile);
 }
 
-initialCards.map(addCardImg);
+// функция для открытия попапа редактирования профиля(данные из профиля в момент открытия передаются в поля инпутов)
+function popupToggleProfile () {
+  popupToggle(popupEditProfile);
 
+  nameInput.value = profileTitle.textContent;
+  jobInput.value = profileSubtitle.textContent;
+}
 
+// createCard(initialCards);
+initialCards.map(createCard);
 
-
-function popupToggle(popup, item = NaN) {
+// функция открытия и закрытия попапа
+function popupToggle(popup) {
   popup.classList.toggle('popup_opened');
-
-    if (popup.classList.contains('popup_opened')) {
-        nameInput.value = profileTitle.textContent;
-        jobInput.value = profileSubtitle.textContent;
-        titlePopup.textContent = item.name;
-        imgPopup.src = item.link;
-    } 
 }
 
 
-
-editButton.addEventListener('click', () => popupToggle(popupEditProfile));
+editButton.addEventListener('click', () => popupToggleProfile(popupEditProfile));
 closeButton.addEventListener('click', () => popupToggle(popupEditProfile));
 
 addButton.addEventListener('click', () => popupToggle(popupEditElement));
@@ -135,7 +147,7 @@ addButton.addEventListener('click', () => popupToggle(popupEditElement));
 btnCloseElement.addEventListener('click', () => popupToggle(popupEditElement));
 btnCloseImage.addEventListener('click', () => popupToggle(popupImgView))
 
-formElement.addEventListener('submit', formSubmitHandler);
+formElement.addEventListener('submit', submitProfileForm);
 formImgElement.addEventListener("submit", addNewCardImg);
 
 
