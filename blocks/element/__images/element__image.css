@@ -6,3 +6,7 @@
     object-fit: cover;
     cursor: pointer;
 }
+
+.element__image:hover {
+    opacity: 0.5;
+}
