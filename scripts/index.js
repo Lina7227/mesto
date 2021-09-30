@@ -130,7 +130,7 @@ function popupToggleProfile () {
   jobInput.value = profileSubtitle.textContent;
 }
 
-// createCard(initialCards);
+
 initialCards.map(createCard);
 
 // функция открытия и закрытия попапа
