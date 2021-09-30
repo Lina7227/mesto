@@ -12,8 +12,8 @@ const addButton = profile.querySelector('.profile__add-button');
 const elementsTable = document.querySelector('.elements__table');
 const imgElementTemplate = document.querySelector('.element-template');
 
-const formElement = document.querySelector('.form__content-profile');
-const formImgElement = document.querySelector('.form__content-img'); // находим форму попапа редактировнаия картинок
+const formElement = document.querySelector('.form__profile');
+const formImgElement = document.querySelector('.form__img'); // находим форму попапа редактировнаия картинок
 
 const nameInput = formElement.querySelector('.form__item_input_name');
 const jobInput = formElement.querySelector('.form__item_input_job');
@@ -21,7 +21,7 @@ const jobInput = formElement.querySelector('.form__item_input_job');
 const profileTitle = profileInfo.querySelector('.profile__title');
 const profileSubtitle = profileInfo.querySelector('.profile__subtitle');
 
-const popupImgView = document.querySelector('.popup__image-view');
+const popupImgView = document.querySelector('.popup__image');
 const btnCloseImage = popupImgView.querySelector('.popup__close_image');
 const imgPopup = popupImgView.querySelector('.popup__image');
 const titlePopup = popupImgView.querySelector('.popup__title');
