@@ -149,4 +149,3 @@ btnCloseImage.addEventListener('click', () => popupToggle(popupImgView))
 
 formElement.addEventListener('submit', submitProfileForm);
 formImgElement.addEventListener("submit", addNewCardImg);
-
