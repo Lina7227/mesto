@@ -130,7 +130,7 @@ function popupToggleProfile () {
   jobInput.value = profileSubtitle.textContent;
 }
 
-// createCard(initialCards);
+
 initialCards.map(createCard);
 
 // функция открытия и закрытия попапа
@@ -149,3 +149,4 @@ btnCloseImage.addEventListener('click', () => popupToggle(popupImgView))
 
 formElement.addEventListener('submit', submitProfileForm);
 formImgElement.addEventListener("submit", addNewCardImg);
+
