@@ -72,6 +72,7 @@ function createCard(item){
 
       addElement.querySelector('.element__title').textContent = item.name;
       addElement.querySelector('.element__image').src = item.link;
+      addElement.querySelector('.element__image').alt = item.name;
       addElement.querySelector('.element__emotion').addEventListener('click', likeElement);
       addElement.querySelector('.element__remove').addEventListener('click', deleteButton);
       addElement.querySelector('.element__image').addEventListener('click', openPopupImg);
@@ -80,8 +81,8 @@ function createCard(item){
 }
 
 // функция добавления карточки 
-function addCardImg(evt) {
-  const newCardImg = evt.map(createCard);
+function addCardImg(initialCards) {
+  const newCardImg = initialCards.map(createCard);
   elementsTable.append(...newCardImg);
   
 }
@@ -92,7 +93,8 @@ function openPopupImg (evt) {
   popupToggle(popupImgView);
 
   imgPopup.src = evt.target.src;
-  titlePopup.textContent = evt.currentTarget.parentElement.querySelector('.element__title').textContent;
+  imgPopup.alt = evt.currentTarget.alt;
+  titlePopup.textContent = evt.currentTarget.alt;
 
 }
 
@@ -129,9 +131,6 @@ function popupToggleProfile () {
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
 }
-
-
-initialCards.map(createCard);
 
 // функция открытия и закрытия попапа
 function popupToggle(popup) {
