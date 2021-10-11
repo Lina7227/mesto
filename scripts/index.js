@@ -25,6 +25,7 @@ const popupImgView = document.querySelector('.popup_image');
 const btnCloseImage = popupImgView.querySelector('.popup__close_image');
 const imgPopup = popupImgView.querySelector('.popup__image');
 const titlePopup = popupImgView.querySelector('.popup__title');
+const popups = document.querySelectorAll('.popup');
 
 
 const initialCards = [
@@ -135,8 +136,26 @@ function popupToggleProfile () {
 // функция открытия и закрытия попапа
 function popupToggle(popup) {
   popup.classList.toggle('popup_opened');
+  document.addEventListener("keydown", closePopupEsc);
 }
 
+// обработчик закрытия попапа при клике на оверлей
+popups.forEach((item) => {
+  item.addEventListener('click', (event) => {
+    if (event.target === event.currentTarget) {
+      popupToggle(event.target);
+    }
+  });
+});
+
+
+// функция закрытия попапа при клике на esc
+function closePopupEsc(evt) {
+  const currentPopup = document.querySelector(".popup_opened");
+  if (evt.key === 'Escape') {
+    popupToggle(currentPopup);
+  }
+}
 
 editButton.addEventListener('click', () => popupToggleProfile(popupEditProfile));
 closeButton.addEventListener('click', () => popupToggle(popupEditProfile));
@@ -144,8 +163,7 @@ closeButton.addEventListener('click', () => popupToggle(popupEditProfile));
 addButton.addEventListener('click', () => popupToggle(popupEditElement));
 
 btnCloseElement.addEventListener('click', () => popupToggle(popupEditElement));
-btnCloseImage.addEventListener('click', () => popupToggle(popupImgView))
+btnCloseImage.addEventListener('click', () => popupToggle(popupImgView));
 
 formElement.addEventListener('submit', submitProfileForm);
 formImgElement.addEventListener("submit", addNewCardImg);
-

@@ -53,14 +53,39 @@
             
             <button type="button" aria-label="закрыть попап" class="popup__close popup__close_form"></button>
             
-            <form name="user" class="form form_profile">
+            <form name="user" class="form form_profile" novalidate>
                 <h2 class="form__title">Редактировать профиль</h2>
                 <fieldset class="form__input-container">
-                    <input type="text" class="form__item form__item_input_name" name="firstname" required placeholder="введите имя" value="Жак-Ив Кусто"> 
-                    <input type="text" class="form__item form__item_input_job" name="jobname" required placeholder="введите свою специальность" value="Исследователь океана">
+                    <input 
+                        type="text" 
+                        class="form__item form__item_input_name" 
+                        id="firstname"
+                        name="firstname"
+                        required
+                        minlength="2"
+                        maxlength="40" 
+                        autocomplete="off"
+                        placeholder="Имя" 
+                        value="Жак-Ив Кусто">
+                    <span id="firstname-error" class="error"></span>
+                    <input 
+                        type="text" 
+                        class="form__item form__item_input_job" 
+                        id="jobname"
+                        name="jobname"
+                        required
+                        minlength="2"
+                        maxlength="200"
+                        autocomplete="off"
+                        placeholder="введите свою специальность" 
+                        value="Исследователь океана">
+                    <span id="jobname-error" class="error"></span>
                 </fieldset>
                 <fieldset class="form__handler">
-                    <input type="submit" class="form__button" value="Сохранить">
+                    <button 
+                        type="submit" 
+                        class="form__button form__button_add">Сохранить
+                    </button>
                 </fieldset>
 
             </form>
@@ -75,14 +100,35 @@
             
             <button type="button" aria-label="закрыть попап" class="popup__close popup__close_form popup__close_element"></button>
             
-            <form name="image" class="form form_img">
+            <form name="image" class="form form_img" novalidate>
                 <h2 class="form__title">Новое место</h2>
                 <fieldset class="form__input-container">
-                    <input type="text" class="form__item form__item_input_title" name="title" required placeholder="Название"> 
-                    <input type="text" class="form__item form__item_input_link" name="link" required placeholder="Ссылка на картинку">
+                    <input 
+                        type="text" 
+                        class="form__item form__item_input_title"
+                        id="title" 
+                        name="title" 
+                        required
+                        minlength="2 "
+                        maxlength="30"
+                        autocomplete="off"
+                        placeholder="Название">
+                    <span id="title-error" class="error"></span> 
+                    <input 
+                        type="url" 
+                        class="form__item form__item_input_link"
+                        id="link" 
+                        name="link" 
+                        required
+                        autocomplete="off"
+                        placeholder="Ссылка на картинку">
+                    <span id="link-error" class="error"></span>
                 </fieldset>
                 <fieldset class="form__handler">
-                    <input type="submit" class="form__button" value="Создать">
+                    <button 
+                        type="submit" 
+                        class="form__button form__button_add">Создать
+                    </button>
                 </fieldset>
 
             </form>
@@ -121,6 +167,7 @@
     </template>
 
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
 
 </body>
 </html> 
