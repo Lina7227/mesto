@@ -1,13 +1,14 @@
 // показ ошибки
-const displayError = (errorElement, inputElement, config)=> {
+const displayError = (errorElement, inputElement, config) => {
     
     errorElement.textContent = inputElement.validationMessage;
     inputElement.classList.add(config.inputErrorClass);
 }
 
 // скрытие ошибки
-const hideError = (errorElement, inputElement, config)=> {
+const hideError = (errorElement, inputElement, config) => {
     
+
     errorElement.textContent = inputElement.validationMessage;
     inputElement.classList.remove(config.inputErrorClass);
 }
@@ -15,6 +16,7 @@ const hideError = (errorElement, inputElement, config)=> {
 //  проверка на ошибку
 const inspectInputValidity = (formElement, inputElement, config) => {
 
+        inputElement.setCustomValidity("");
         const isInputNotValid = !inputElement.validity.valid;
         const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
        
@@ -33,7 +35,7 @@ const toggleButtonState = (button, isActive, config) => {
         button.disabled = false;
     } else {
         button.classList.add(config.inactiveButtonClass);
-        button.disabled = 'desabled';
+        button.disabled = 'disabled';
     }
 }
 
@@ -67,9 +69,11 @@ const enableValidation = (config) => {
     const forms = document.querySelectorAll(config.formSelector);
     
     Array.from(forms).forEach(formElement => {
-        
+    
         setEventListers(formElement, config);
     });
+
+    
 }
 
 const validationConfig = {
@@ -81,3 +85,4 @@ const validationConfig = {
 } 
 
 enableValidation(validationConfig);
+

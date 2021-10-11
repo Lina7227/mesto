@@ -7,16 +7,16 @@ const popupEditElement = document.querySelector('.popup_edit_element'); // по�
 const popupEditProfile = document.querySelector('.popup_edit_profile'); 
 const btnCloseElement = popupEditElement.querySelector('.popup__close_element');
 
-const closeButton = popupEditProfile.querySelector('.popup__close');
+const closeProfilePopupButton = popupEditProfile.querySelector('.popup__close');
 const addButton = profile.querySelector('.profile__add-button');
 const elementsTable = document.querySelector('.elements__table');
 const imgElementTemplate = document.querySelector('.element-template');
 
-const formElement = document.querySelector('.form_profile');
+const formProfileElement = document.querySelector('.form_profile');
 const formImgElement = document.querySelector('.form_img'); // находим форму попапа редактировнаия картинок
 
-const nameInput = formElement.querySelector('.form__item_input_name');
-const jobInput = formElement.querySelector('.form__item_input_job');
+const nameInput = formProfileElement.querySelector('.form__item_input_name');
+const jobInput = formProfileElement.querySelector('.form__item_input_job');
 
 const profileTitle = profileInfo.querySelector('.profile__title');
 const profileSubtitle = profileInfo.querySelector('.profile__subtitle');
@@ -26,36 +26,6 @@ const btnCloseImage = popupImgView.querySelector('.popup__close_image');
 const imgPopup = popupImgView.querySelector('.popup__image');
 const titlePopup = popupImgView.querySelector('.popup__title');
 const popups = document.querySelectorAll('.popup');
-
-
-const initialCards = [
-  {
-    name: 'Балтийское море',
-    link: 'https://images.unsplash.com/photo-1589876876491-df78ff60e196?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=764&q=80.jpg'
-  },
-  {
-    name: 'Мыс Фиолент',
-    link: 'https://images.unsplash.com/photo-1591528848788-ffdfd2d40309?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1074&q=80.jpg'
-  },
-  {
-    name: 'Уральские горы',
-    link: 'https://images.unsplash.com/photo-1566221880968-ad3da1d5fe84?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80.jpg'
-  },
-  {
-    name: 'Пермский край',
-    link: 'https://images.unsplash.com/photo-1601274589050-e05871df86d9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1081&q=80.jpg'
-  },
-  {
-    name: 'Ялта',
-    link: 'https://images.unsplash.com/photo-1564085892527-f072eb172a91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80.jpg'
-  },
-  {
-    name: 'Соловецкие острова',
-    link: 'https://images.unsplash.com/photo-1615727551941-a8d55481a0b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80.jpg'
-  }
-];
-
-initialCards.reverse(); 
 
 // функция лайков
 function likeElement(evt) {
@@ -70,13 +40,14 @@ function deleteButton(evt){
 // функция создания элементов (наполняет содержимым)
 function createCard(item){
       const addElement = imgElementTemplate.content.cloneNode(true);
+      const elementImage = addElement.querySelector('.element__image');
 
       addElement.querySelector('.element__title').textContent = item.name;
-      addElement.querySelector('.element__image').src = item.link;
-      addElement.querySelector('.element__image').alt = item.name;
+      elementImage.src = item.link;
+      elementImage.alt = item.name;
       addElement.querySelector('.element__emotion').addEventListener('click', likeElement);
       addElement.querySelector('.element__remove').addEventListener('click', deleteButton);
-      addElement.querySelector('.element__image').addEventListener('click', openPopupImg);
+      elementImage.addEventListener('click', openPopupImg);
       return(addElement)
 
 }
@@ -136,12 +107,17 @@ function popupToggleProfile () {
 // функция открытия и закрытия попапа
 function popupToggle(popup) {
   popup.classList.toggle('popup_opened');
-  document.addEventListener("keydown", closePopupEsc);
+  if (popup.classList.contains('popup_opened')) {
+    document.addEventListener("keydown", closePopupEsc);
+  } else {
+    document.removeEventListener("keydown", closePopupEsc);
+  }
+  
 }
 
 // обработчик закрытия попапа при клике на оверлей
 popups.forEach((item) => {
-  item.addEventListener('click', (event) => {
+  item.addEventListener('mousedown', (event) => {
     if (event.target === event.currentTarget) {
       popupToggle(event.target);
     }
@@ -158,12 +134,12 @@ function closePopupEsc(evt) {
 }
 
 editButton.addEventListener('click', () => popupToggleProfile(popupEditProfile));
-closeButton.addEventListener('click', () => popupToggle(popupEditProfile));
+closeProfilePopupButton.addEventListener('click', () => popupToggle(popupEditProfile));
 
 addButton.addEventListener('click', () => popupToggle(popupEditElement));
 
 btnCloseElement.addEventListener('click', () => popupToggle(popupEditElement));
 btnCloseImage.addEventListener('click', () => popupToggle(popupImgView));
 
-formElement.addEventListener('submit', submitProfileForm);
+formProfileElement.addEventListener('submit', submitProfileForm);
 formImgElement.addEventListener("submit", addNewCardImg);
