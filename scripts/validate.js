@@ -9,14 +9,14 @@ const displayError = (errorElement, inputElement, config) => {
 const hideError = (errorElement, inputElement, config) => {
     
 
-    errorElement.textContent = inputElement.validationMessage;
+    errorElement.textContent =  '';
     inputElement.classList.remove(config.inputErrorClass);
 }
 
 //  проверка на ошибку
 const inspectInputValidity = (formElement, inputElement, config) => {
 
-        inputElement.setCustomValidity("");
+        
         const isInputNotValid = !inputElement.validity.valid;
         const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
        
@@ -45,8 +45,8 @@ const setEventListeners = (formElement, config) => {
 
     const inputList = formElement.querySelectorAll(config.inputSelector);
     const buttonElement = formElement.querySelector(config.submitButtonSelector);
-
-    toggleButtonState(inputList, buttonElement);
+    const isFormValid = formElement.checkValidity();
+    toggleButtonState(buttonElement, isFormValid, config);
     
     Array.from(inputList).forEach(inputElement => {
 
