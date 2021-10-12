@@ -30,21 +30,23 @@ const inspectInputValidity = (formElement, inputElement, config) => {
 
 // переключение кнопки: активное/ неактивное состояние
 const toggleButtonState = (button, isActive, config) => {
+    console.log();
     if (isActive) {
         button.classList.remove(config.inactiveButtonClass);
         button.disabled = false;
     } else {
         button.classList.add(config.inactiveButtonClass);
-        button.disabled = 'disabled';
+        button.disabled = true;
     }
 }
 
 // обрабатывает инпуты 
-const setEventListers = (formElement, config) => {
+const setEventListeners = (formElement, config) => {
 
     const inputList = formElement.querySelectorAll(config.inputSelector);
     const buttonElement = formElement.querySelector(config.submitButtonSelector);
-    
+
+    toggleButtonState(inputList, buttonElement);
     
     Array.from(inputList).forEach(inputElement => {
 
@@ -60,8 +62,6 @@ const setEventListers = (formElement, config) => {
         evt.preventDefault();
     });
 
-
-
 }
 
 // активизирует валидацию
@@ -70,7 +70,7 @@ const enableValidation = (config) => {
     
     Array.from(forms).forEach(formElement => {
     
-        setEventListers(formElement, config);
+        setEventListeners(formElement, config);
     });
 
     
