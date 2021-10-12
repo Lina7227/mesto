@@ -26,7 +26,7 @@ const btnCloseImage = popupImgView.querySelector('.popup__close_image');
 const imgPopup = popupImgView.querySelector('.popup__image');
 const titlePopup = popupImgView.querySelector('.popup__title');
 const popups = document.querySelectorAll('.popup');
-const btnFormSubmit = popupEditElement.querySelector('.form__button_add');
+const btnFormImgSubmit = popupEditElement.querySelector('.form__button_add');
 
 // функция лайков
 function likeElement(evt) {
@@ -84,8 +84,8 @@ function addNewCardImg(evt) {
   popupToggle(popupEditElement);
   evt.currentTarget.reset();
 
-  btnFormSubmit.setAttribute('disabled', false);
-  btnFormSubmit.classList.add('form__button_invalid');
+  btnFormImgSubmit.setAttribute('disabled', false);
+  btnFormImgSubmit.classList.add('form__button_invalid');
 
 }
 
