@@ -47,7 +47,7 @@ export default class Card {
 
     }
 
-    // метод открытия фото для просмотра
+    // функция открытия фото для просмотра
     _cardClickImg() {
       
       popupToggle(popupImgView);
@@ -60,14 +60,14 @@ export default class Card {
     }
   
 
-    // метод лайков
+    // функция лайков
     _likeButtonElement() {
 
         const likeButoon = this._element.querySelector('.element__emotion');
         likeButoon.classList.toggle('element__emotion_active');
     }
 
-        // метод удаления
+        // функция удаления
     _deleteButton() {
         this._element.remove();
         this._element.innerHTML = "";
@@ -78,3 +78,13 @@ export default class Card {
 }
 
       
+initialCards.forEach((item) => {
+// Создадим экземпляр карточки
+const card = new Card(item, '.element-template');
+// Создаём карточку и возвращаем наружу
+const cardElement = card.generateCard();
+
+// Добавляем в DOM
+document.querySelector('.elements__table').append(cardElement);
+
+});

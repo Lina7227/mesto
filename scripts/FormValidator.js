@@ -62,13 +62,13 @@ class FormValidator {
     _setEventListeners = () => {
 
         const inputList = this._formElement.querySelector(this._inputSelector);
-        const isFormValid = this._formElement.checkValidity;
+        const isFormValid = this._formElement.checkValidity();
         this._toggleButtonState(isFormValid);
         
         Array.from(inputList).forEach(inputElement => {
 
             inputElement.addEventListener('input', () => {
-                const isFormValid = this._formElement.checkValidity;
+                const isFormValid = this._formElement.checkValidity();
 
                 this._inspectInputValidity(inputElement);
                 this._toggleButtonState(isFormValid);
@@ -84,10 +84,14 @@ class FormValidator {
 
     /// активизирует валидацию
     enableValidation = () => {
-
-        this._setEventListeners();
-
-    }   
+        const forms = document.querySelector(this._formSelector);
+        console.log(forms);
+        Array.from(forms).forEach(formElement => {
+        
+            this._setEventListeners(formElement, this._formSelector);
+        });
+    
+    }
 
 }
 

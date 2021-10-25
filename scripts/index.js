@@ -42,11 +42,11 @@ initialCards.forEach((item) => {
 });
 
 //валидация формы добавления фото
-const formAddImg = new FormValidator(config, '.popup_images')
+const formAddImg = new FormValidator(config, '.form_img');
 formAddImg.enableValidation();
 
 //валидация формы редактирования профиля
-const formEditProfile = new FormValidator(config, '.popup_edit_element')
+const formEditProfile = new FormValidator(config, '.form_profile');
 formEditProfile.enableValidation();
 
 // функция добавления фото из формы
@@ -58,7 +58,7 @@ function addNewCardImg(evt) {
   const newCard = new Card({name: titleInput,link: linkInput}, '.element-template');
   
   elementsTable.prepend(newCard.generateCard());
-
+  // console.log(evt.currentTarget.querySelector());
   popupToggle(popupEditElement);
   evt.currentTarget.reset();
 
