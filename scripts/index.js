@@ -1,4 +1,5 @@
-import Card from './Card.js'
+import Card from './Card.js';
+import {config, FormValidator} from './FormValidator.js';
 
 const profile = document.querySelector('.profile');
 const profileInfo = profile.querySelector('.profile__info');
@@ -27,16 +28,36 @@ const btnCloseImage = popupImgView.querySelector('.popup__close_image');
 const popups = document.querySelectorAll('.popup');
 const btnFormImgSubmit = popupEditElement.querySelector('.form__button_add');
 
+
+initialCards.forEach((item) => {
+  // Создадим экземпляр карточки
+  const card = new Card(item, '.element-template');
+
+  // Создаём карточку и возвращаем наружу
+  const cardElement = card.generateCard();
+ 
+  // Добавляем в DOM
+  document.querySelector('.elements__table').append(cardElement);
+  
+});
+
+//валидация формы добавления фото
+const formAddImg = new FormValidator(config, '.popup_images')
+formAddImg.enableValidation();
+
+//валидация формы редактирования профиля
+const formEditProfile = new FormValidator(config, '.popup_edit_element')
+formEditProfile.enableValidation();
+
 // функция добавления фото из формы
 function addNewCardImg(evt) {
   evt.preventDefault();
-
   const titleInput = evt.currentTarget.querySelector ('.form__item_input_title').value; 
   const linkInput = evt.currentTarget.querySelector ('.form__item_input_link').value;
-  const newInitialCards = new Card ({name: titleInput,link: linkInput});
-  elementsTable.prepend(newInitialCards);
 
-  console.log(newInitialCards);
+  const newCard = new Card({name: titleInput,link: linkInput}, '.element-template');
+  
+  elementsTable.prepend(newCard.generateCard());
 
   popupToggle(popupEditElement);
   evt.currentTarget.reset();
@@ -48,10 +69,10 @@ function addNewCardImg(evt) {
 // функция редактирования профиля
 function submitProfileForm (evt) {
     evt.preventDefault(); 
-
+  
     const nameValue = nameInput.value; 
     const jobValue = jobInput.value;
-    
+ 
     profileTitle.textContent = nameValue;
     profileSubtitle.textContent = jobValue;
     popupToggle(popupEditProfile);
@@ -106,3 +127,4 @@ formProfileElement.addEventListener('submit', submitProfileForm);
 formImgElement.addEventListener("submit", addNewCardImg);
 
 
+export {popupToggle, popupImgView};

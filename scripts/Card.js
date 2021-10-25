@@ -1,3 +1,5 @@
+import {popupToggle, popupImgView} from './index.js';
+
 export default class Card {
     constructor(data, cardSelector){
       this._name = data.name;
@@ -45,12 +47,10 @@ export default class Card {
 
     }
 
-    // функция открытия фото для просмотра
+    // метод открытия фото для просмотра
     _cardClickImg() {
       
-      const openPopupImg = document.querySelector('.popup_images');
-      
-      openPopupImg.classList.add('popup_opened');
+      popupToggle(popupImgView);
     
       const imgPopup = document.querySelector('.popup__image');
       imgPopup.src = this._link;
@@ -60,14 +60,14 @@ export default class Card {
     }
   
 
-    // функция лайков
+    // метод лайков
     _likeButtonElement() {
 
         const likeButoon = this._element.querySelector('.element__emotion');
         likeButoon.classList.toggle('element__emotion_active');
     }
 
-        // функция удаления
+        // метод удаления
     _deleteButton() {
         this._element.remove();
         this._element.innerHTML = "";
@@ -78,13 +78,3 @@ export default class Card {
 }
 
       
-initialCards.forEach((item) => {
-// Создадим экземпляр карточки
-const card = new Card(item, '.element-template');
-// Создаём карточку и возвращаем наружу
-const cardElement = card.generateCard();
-
-// Добавляем в DOM
-document.querySelector('.elements__table').append(cardElement);
-
-});
