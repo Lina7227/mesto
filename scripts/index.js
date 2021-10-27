@@ -1,5 +1,6 @@
-import Card from './Card.js';
-import {config, FormValidator} from './FormValidator.js';
+import { initialCards } from './cardArrow.js';
+import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
 
 const profile = document.querySelector('.profile');
 const profileInfo = profile.querySelector('.profile__info');
@@ -28,25 +29,34 @@ const btnCloseImage = popupImgView.querySelector('.popup__close_image');
 const popups = document.querySelectorAll('.popup');
 const btnFormImgSubmit = popupEditElement.querySelector('.form__button_add');
 
-
 initialCards.forEach((item) => {
   // Создадим экземпляр карточки
   const card = new Card(item, '.element-template');
-
   // Создаём карточку и возвращаем наружу
   const cardElement = card.generateCard();
- 
+  
   // Добавляем в DOM
   document.querySelector('.elements__table').append(cardElement);
+  
 });
 
-//валидация формы добавления фото
-const formAddImg = new FormValidator(config, formImgElement);
-formAddImg.enableValidation();
+const enableValidation = (evt) => {
+  const forms = document.querySelectorAll(evt.formSelector);
+  Array.from(forms).forEach(formElement => {
+    const validation = new FormValidator(evt, formElement);
+    validation.enableValidation();
+  });
+}
 
-//валидация формы редактирования профиля
-const formEditProfile = new FormValidator(config, formProfileElement);
-formEditProfile.enableValidation();
+enableValidation(
+  {
+    formSelector: '.form',
+    inputSelector: '.form__item',
+    submitButtonSelector: '.form__button',
+    inactiveButtonClass: 'form__button_invalid',
+    inputErrorClass: 'form__item_input_invalid'
+  }
+);
 
 // функция добавления фото из формы
 function addNewCardImg(evt) {
@@ -63,7 +73,6 @@ function addNewCardImg(evt) {
   
   btnFormImgSubmit.setAttribute('disabled', 'disabled');
   btnFormImgSubmit.classList.add('form__button_invalid');
-
   
 }
 

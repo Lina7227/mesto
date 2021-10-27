@@ -1,6 +1,7 @@
-import {popupToggle, popupImgView} from './index.js';
+import { initialCards } from './cardArrow.js';
+import { popupToggle, popupImgView } from './index.js';
 
-export default class Card {
+class Card {
     constructor(data, cardSelector){
       this._name = data.name;
       this._link = data.link;
@@ -74,17 +75,7 @@ export default class Card {
         
     }
 
-    
 }
 
       
-initialCards.forEach((item) => {
-// Создадим экземпляр карточки
-const card = new Card(item, '.element-template');
-// Создаём карточку и возвращаем наружу
-const cardElement = card.generateCard();
-
-// Добавляем в DOM
-document.querySelector('.elements__table').append(cardElement);
-
-});
+export { Card };

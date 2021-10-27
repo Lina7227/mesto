@@ -26,3 +26,5 @@ const initialCards = [
 ];
 
 initialCards.reverse(); 
+
+export {initialCards};

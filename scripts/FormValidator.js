@@ -1,34 +1,21 @@
-const config = {
-    formSelector: '.form',
-    inputSelector: '.form__item',
-    submitButtonSelector: '.form__button',
-    inactiveButtonClass: 'form__button_invalid',
-    inputErrorClass: 'form__item_input_invalid'
-} 
-
 class FormValidator {
     constructor (config, formElement) {
         this._formElement = formElement;
-        this._formSelector = config.formSelector;
-        this._inputSelector = config.inputSelector;
-        this._submitButtonSelector = config.submitButtonSelector;
-        this._inactiveButtonClass = config.inactiveButtonClass;
-        this._inputErrorClass = config.inputErrorClass;
-        this._button = document.querySelector(this._submitButtonSelector);
+        this._config = config;
     }
 
     // показ ошибки
     _displayError = (errorElement, inputElement) => {
         
         errorElement.textContent = inputElement.validationMessage;
-        inputElement.classList.add(this._inputErrorClass);
+        inputElement.classList.add(this._config.inputErrorClass);
     }
 
     // скрытие ошибки
     _hideError = (errorElement, inputElement) => {
         
         errorElement.textContent = '';
-        inputElement.classList.remove(this._inputErrorClass);
+        inputElement.classList.remove(this._config.inputErrorClass);
     }
 
     //  проверка на ошибку
@@ -48,23 +35,24 @@ class FormValidator {
 
     // переключение кнопки: активное/ неактивное состояние
     _toggleButtonState = (isActive) => {
-        
+        const button = this._formElement.querySelector(this._config.submitButtonSelector);
+
         if (isActive) {
-            this._button.classList.remove(this._inactiveButtonClass);
-            this._button.disabled = false;
+            button.classList.remove(this._config.inactiveButtonClass);
+            button.disabled = false;
         } else {
-            this._button.classList.add(this._inactiveButtonClass);
-            this._button.disabled = true;
+            button.classList.add(this._config.inactiveButtonClass);
+            button.disabled = true;
         }
     }
     
     // обрабатывает инпуты 
     _setEventListeners = () => {
 
-        const inputList = this._formElement.querySelectorAll(this._inputSelector);
+        const inputList = this._formElement.querySelectorAll(this._config.inputSelector);
         const isFormValid = this._formElement.checkValidity();
         this._toggleButtonState(isFormValid);
-        console.log(inputList);
+        // console.log(inputList);
         Array.from(inputList).forEach(inputElement => {
 
             inputElement.addEventListener('input', () => {
@@ -84,15 +72,11 @@ class FormValidator {
 
     /// активизирует валидацию
     enableValidation = () => {
-        const forms = document.querySelector(this._formSelector);
+        const form = this._formElement;
         
-        Array.from(forms).forEach(formElement => {
-        
-            this._setEventListeners(formElement, this._formSelector);
-        });
-    
+        this._setEventListeners(form, this.config);
     }
 
 }
 
-export {config, FormValidator};
+export {FormValidator};
