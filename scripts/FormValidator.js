@@ -70,7 +70,7 @@ class FormValidator {
 
     }
 
-    /// активизирует валидацию
+    // активизирует валидацию
     enableValidation = () => {
         const form = this._formElement;
         

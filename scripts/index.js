@@ -40,15 +40,7 @@ initialCards.forEach((item) => {
   
 });
 
-const enableValidation = (evt) => {
-  const forms = document.querySelectorAll(evt.formSelector);
-  Array.from(forms).forEach(formElement => {
-    const validation = new FormValidator(evt, formElement);
-    validation.enableValidation();
-  });
-}
-
-enableValidation(
+const config =
   {
     formSelector: '.form',
     inputSelector: '.form__item',
@@ -56,7 +48,15 @@ enableValidation(
     inactiveButtonClass: 'form__button_invalid',
     inputErrorClass: 'form__item_input_invalid'
   }
-);
+;
+
+//валидация формы добавления фото
+const formAddImg = new FormValidator(config, formImgElement);
+formAddImg.enableValidation();
+
+//валидация формы редактирования профиля
+const formEditProfile = new FormValidator(config, formProfileElement);
+formEditProfile.enableValidation();
 
 // функция добавления фото из формы
 function addNewCardImg(evt) {
