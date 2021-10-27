@@ -7,9 +7,9 @@ const config = {
 } 
 
 class FormValidator {
-    constructor (config, formSelector) {
-        this._formSelector = formSelector;
-        this._formElement = document.querySelector(this._formSelector);
+    constructor (config, formElement) {
+        this._formElement = formElement;
+        this._formSelector = config.formSelector;
         this._inputSelector = config.inputSelector;
         this._submitButtonSelector = config.submitButtonSelector;
         this._inactiveButtonClass = config.inactiveButtonClass;
@@ -61,10 +61,10 @@ class FormValidator {
     // обрабатывает инпуты 
     _setEventListeners = () => {
 
-        const inputList = this._formElement.querySelector(this._inputSelector);
+        const inputList = this._formElement.querySelectorAll(this._inputSelector);
         const isFormValid = this._formElement.checkValidity();
         this._toggleButtonState(isFormValid);
-        
+        console.log(inputList);
         Array.from(inputList).forEach(inputElement => {
 
             inputElement.addEventListener('input', () => {
@@ -85,7 +85,7 @@ class FormValidator {
     /// активизирует валидацию
     enableValidation = () => {
         const forms = document.querySelector(this._formSelector);
-        console.log(forms);
+        
         Array.from(forms).forEach(formElement => {
         
             this._setEventListeners(formElement, this._formSelector);

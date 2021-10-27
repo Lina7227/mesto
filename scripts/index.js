@@ -38,15 +38,14 @@ initialCards.forEach((item) => {
  
   // Добавляем в DOM
   document.querySelector('.elements__table').append(cardElement);
-  
 });
 
 //валидация формы добавления фото
-const formAddImg = new FormValidator(config, '.form_img');
+const formAddImg = new FormValidator(config, formImgElement);
 formAddImg.enableValidation();
 
 //валидация формы редактирования профиля
-const formEditProfile = new FormValidator(config, '.form_profile');
+const formEditProfile = new FormValidator(config, formProfileElement);
 formEditProfile.enableValidation();
 
 // функция добавления фото из формы
@@ -61,9 +60,11 @@ function addNewCardImg(evt) {
   // console.log(evt.currentTarget.querySelector());
   popupToggle(popupEditElement);
   evt.currentTarget.reset();
-
+  
   btnFormImgSubmit.setAttribute('disabled', 'disabled');
   btnFormImgSubmit.classList.add('form__button_invalid');
+
+  
 }
 
 // функция редактирования профиля
@@ -84,6 +85,7 @@ function popupToggleProfile () {
 
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
+  
 }
 
 // функция открытия и закрытия попапа
@@ -94,7 +96,6 @@ function popupToggle(popup) {
   } else {
     document.removeEventListener("keydown", closePopupEsc);
   }
-  
 }
 
 // обработчик закрытия попапа при клике на оверлей
