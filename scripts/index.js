@@ -9,9 +9,7 @@ const editButton = profileInfo.querySelector('.profile__edit-button');
 
 const popupEditElement = document.querySelector('.popup_edit_element'); // попап добавления картинок
 const popupEditProfile = document.querySelector('.popup_edit_profile'); 
-const btnCloseElement = popupEditElement.querySelector('.popup__close_element');
 
-const closeProfilePopupButton = popupEditProfile.querySelector('.popup__close');
 const addButton = profile.querySelector('.profile__add-button');
 const elementsTable = document.querySelector('.elements__table');
 
@@ -25,10 +23,7 @@ const profileTitle = profileInfo.querySelector('.profile__title');
 const profileSubtitle = profileInfo.querySelector('.profile__subtitle');
 
 const popupImgView = document.querySelector('.popup_images');
-
-const btnCloseImage = popupImgView.querySelector('.popup__close_image');
 const popups = document.querySelectorAll('.popup');
-const btnFormImgSubmit = popupEditElement.querySelector('.form__button_add');
 
 
 const config =
@@ -126,17 +121,8 @@ function closePopupEsc(evt) {
   }
 }
 
-// // обработчик закрытия попапа при клике на оверлей
-// popups.forEach((item) => {
-//   item.addEventListener('mousedown', (event) => {
-//     if (event.target === event.currentTarget) {
-//       popupToggle(event.target);
-//     }
-//   });
-// });
-
-// обработчик закрытия попапа при клике на оверлей
-Array.from(popups).forEach(item => {
+// обработчик закрытия попапа при клике на оверлей и на крестик
+popups.forEach(item => {
   item.addEventListener('mousedown', evt => {
     if (evt.target.classList.contains('popup_opened')) {
       popupToggle(item);
@@ -148,12 +134,8 @@ Array.from(popups).forEach(item => {
 
 
 editButton.addEventListener('click', () => popupToggleProfile(popupEditProfile));
-// closeProfilePopupButton.addEventListener('click', () => popupToggle(popupEditProfile));
 
 addButton.addEventListener('click', () => popupToggleFormImg(popupEditElement));
-
-// btnCloseElement.addEventListener('click', () => popupToggle(popupEditElement));
-// btnCloseImage.addEventListener('click', () => popupToggle(popupImgView));
 
 formProfileElement.addEventListener('submit', submitProfileForm);
 formImgElement.addEventListener("submit", addNewCardImg);
