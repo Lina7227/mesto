@@ -1,5 +1,5 @@
 import { initialCards } from './cardArrow.js';
-import { popupToggle, popupImgView } from './index.js';
+import { popupToggle, popupImgView} from './index.js';
 
 class Card {
     constructor(data, cardSelector){
@@ -19,13 +19,15 @@ class Card {
     
     generateCard() {
         this._element = this._getTemplate();
-        this._setEventListeners();
-        const cardImage = this._element.querySelector('.element__image');   
+        
+        this._cardImage = this._element.querySelector('.element__image');
+        this._likeButton = this._element.querySelector('.element__emotion');   
       
-        cardImage.src = this._link;
-        cardImage.alt = this._name;
+        this._cardImage.src = this._link;
+        this._cardImage.alt = this._name;
         this._element.querySelector('.element__title').textContent = this._name;
       
+        this._setEventListeners();
       return this._element;
     }
 
@@ -33,7 +35,7 @@ class Card {
     // слушатель событий
     _setEventListeners() {
 
-        this._element.querySelector('.element__emotion').addEventListener('click', () => {
+        this._likeButton.addEventListener('click', () => {
             this._likeButtonElement();
           });
 
@@ -41,7 +43,7 @@ class Card {
             this._deleteButton();
         });
 
-        this._element.querySelector('.element__image').addEventListener('click', () => {
+        this._cardImage.addEventListener('click', () => {
           this._cardClickImg(this._name, this._link);
         });
 
@@ -64,14 +66,14 @@ class Card {
     // функция лайков
     _likeButtonElement() {
 
-        const likeButoon = this._element.querySelector('.element__emotion');
-        likeButoon.classList.toggle('element__emotion_active');
+        // const likeButoon = this._element.querySelector('.element__emotion');
+        this._likeButton.classList.toggle('element__emotion_active');
     }
 
         // функция удаления
     _deleteButton() {
         this._element.remove();
-        this._element.innerHTML = "";
+        this._element.innerHTML = null;
         
     }
 

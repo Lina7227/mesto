@@ -25,20 +25,11 @@ const profileTitle = profileInfo.querySelector('.profile__title');
 const profileSubtitle = profileInfo.querySelector('.profile__subtitle');
 
 const popupImgView = document.querySelector('.popup_images');
+
 const btnCloseImage = popupImgView.querySelector('.popup__close_image');
 const popups = document.querySelectorAll('.popup');
 const btnFormImgSubmit = popupEditElement.querySelector('.form__button_add');
 
-initialCards.forEach((item) => {
-  // Создадим экземпляр карточки
-  const card = new Card(item, '.element-template');
-  // Создаём карточку и возвращаем наружу
-  const cardElement = card.generateCard();
-  
-  // Добавляем в DOM
-  document.querySelector('.elements__table').append(cardElement);
-  
-});
 
 const config =
   {
@@ -58,21 +49,33 @@ formAddImg.enableValidation();
 const formEditProfile = new FormValidator(config, formProfileElement);
 formEditProfile.enableValidation();
 
+function createCard(item) {
+  const card = new Card(item, '.element-template');
+  const cardElement = card.generateCard();
+  return cardElement;
+}
+
+
+initialCards.forEach((item) => {
+  const element = createCard(item)
+  elementsTable.append(element);
+  
+});
+
 // функция добавления фото из формы
 function addNewCardImg(evt) {
   evt.preventDefault();
   const titleInput = evt.currentTarget.querySelector ('.form__item_input_title').value; 
   const linkInput = evt.currentTarget.querySelector ('.form__item_input_link').value;
 
-  const newCard = new Card({name: titleInput,link: linkInput}, '.element-template');
+  const newCard = {name: titleInput,link: linkInput};
+
+  const elementCard =createCard(newCard);
   
-  elementsTable.prepend(newCard.generateCard());
-  // console.log(evt.currentTarget.querySelector());
+  elementsTable.prepend(elementCard);
+  
   popupToggle(popupEditElement);
   evt.currentTarget.reset();
-  
-  btnFormImgSubmit.setAttribute('disabled', 'disabled');
-  btnFormImgSubmit.classList.add('form__button_invalid');
   
 }
 
@@ -94,7 +97,14 @@ function popupToggleProfile () {
 
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
-  
+  formEditProfile.resetValidation();
+}
+
+// функция для открытия попапа добавления фото
+function popupToggleFormImg () {
+
+  popupToggle(popupEditElement);
+  formAddImg.resetValidation();
 }
 
 // функция открытия и закрытия попапа
@@ -107,31 +117,43 @@ function popupToggle(popup) {
   }
 }
 
+// функция закрытия попапа при клике на esc
+function closePopupEsc(evt) {
+  
+  if (evt.key === 'Escape') {
+    const currentPopup = document.querySelector('.popup_opened');
+    popupToggle(currentPopup);
+  }
+}
+
+// // обработчик закрытия попапа при клике на оверлей
+// popups.forEach((item) => {
+//   item.addEventListener('mousedown', (event) => {
+//     if (event.target === event.currentTarget) {
+//       popupToggle(event.target);
+//     }
+//   });
+// });
+
 // обработчик закрытия попапа при клике на оверлей
-popups.forEach((item) => {
-  item.addEventListener('mousedown', (event) => {
-    if (event.target === event.currentTarget) {
-      popupToggle(event.target);
+Array.from(popups).forEach(item => {
+  item.addEventListener('mousedown', evt => {
+    if (evt.target.classList.contains('popup_opened')) {
+      popupToggle(item);
+    } if (evt.target.classList.contains('popup__close')) {
+      popupToggle(item);
     }
   });
 });
 
 
-// функция закрытия попапа при клике на esc
-function closePopupEsc(evt) {
-  const currentPopup = document.querySelector(".popup_opened");
-  if (evt.key === 'Escape') {
-    popupToggle(currentPopup);
-  }
-}
-
 editButton.addEventListener('click', () => popupToggleProfile(popupEditProfile));
-closeProfilePopupButton.addEventListener('click', () => popupToggle(popupEditProfile));
+// closeProfilePopupButton.addEventListener('click', () => popupToggle(popupEditProfile));
 
-addButton.addEventListener('click', () => popupToggle(popupEditElement));
+addButton.addEventListener('click', () => popupToggleFormImg(popupEditElement));
 
-btnCloseElement.addEventListener('click', () => popupToggle(popupEditElement));
-btnCloseImage.addEventListener('click', () => popupToggle(popupImgView));
+// btnCloseElement.addEventListener('click', () => popupToggle(popupEditElement));
+// btnCloseImage.addEventListener('click', () => popupToggle(popupImgView));
 
 formProfileElement.addEventListener('submit', submitProfileForm);
 formImgElement.addEventListener("submit", addNewCardImg);
