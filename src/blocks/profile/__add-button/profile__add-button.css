@@ -6,7 +6,7 @@
     background-color: inherit;
     border: 2px solid #FFFFFF;
     border-radius: 2px;
-    background-image: url("../../../images/add_button.svg");
+    background-image: url("/src/images/add_button.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 22px 22px;

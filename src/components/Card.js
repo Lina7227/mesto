@@ -1,12 +1,15 @@
 import { initialCards } from './cardArrow.js';
-import { popupToggle, popupImgView} from './index.js';
+// import { popupToggle, popupImgView} from './index.js';
 
 class Card {
-    constructor(data, cardSelector){
+    constructor({data, handleCardClick}, cardSelector){
       this._name = data.name;
       this._link = data.link;
+      this._evt = data.evt;
       this._cardSelector = cardSelector;
+      this.handleCardClick = handleCardClick;
     }
+
     _getTemplate() {
       const cardElement = document
       .querySelector(this._cardSelector)
@@ -44,33 +47,18 @@ class Card {
         });
 
         this._cardImage.addEventListener('click', () => {
-          this._cardClickImg(this._name, this._link);
+          this.handleCardClick(this._evt);
         });
 
 
-    }
-
-    // функция открытия фото для просмотра
-    _cardClickImg() {
-      
-      popupToggle(popupImgView);
-    
-      const imgPopup = document.querySelector('.popup__image');
-      imgPopup.src = this._link;
-      imgPopup.alt = this._name;
-      document.querySelector('.popup__title').textContent = this._name;
-    
-    }
-  
+    }  
 
     // функция лайков
     _likeButtonElement() {
-
-        // const likeButoon = this._element.querySelector('.element__emotion');
         this._likeButton.classList.toggle('element__emotion_active');
     }
 
-        // функция удаления
+    // функция удаления
     _deleteButton() {
         this._element.remove();
         this._element.innerHTML = null;

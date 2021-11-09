@@ -3,7 +3,7 @@
     width: 100%;
     height: 19px;
     margin-top: 6px;
-    background-image: url("../../../images/heart.svg");
+    background-image: url("/src/images/heart.svg");
     background-color: inherit;
     border: none;
     cursor: pointer;
