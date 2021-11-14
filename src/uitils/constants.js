@@ -22,11 +22,6 @@ const elementsTable = document.querySelector('.elements__table');
 const formProfileElement = document.querySelector('.form_profile');
 const formImgElement = document.querySelector('.form_img'); // находим форму попапа редактировнаия картинок
 
-const nameInput = formProfileElement.querySelector('.form__item_input_name');
-const jobInput = formProfileElement.querySelector('.form__item_input_job');
-const titleInput = formImgElement.querySelector('.form__item_input_title');
-const linkTitle = formImgElement.querySelector('.form__item_input_link');
-
 const profileTitle = profileInfo.querySelector('.profile__title');
 const profileSubtitle = profileInfo.querySelector('.profile__subtitle');
 
@@ -40,10 +35,6 @@ export {
   popupEditProfile,
   addButton,
   elementsTable,
-  nameInput,
-  jobInput,
-  titleInput,
-  linkTitle,
   profileTitle,
   profileSubtitle,
   popupImgView,

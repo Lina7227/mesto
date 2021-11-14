@@ -6,10 +6,6 @@ import {
   popupEditProfile,
   addButton,
   elementsTable,
-  nameInput,
-  jobInput,
-  titleInput,
-  linkTitle,
   profileTitle,
   profileSubtitle,
   popupImgView,
@@ -91,13 +87,14 @@ formEditProfile.enableValidation();
 
 
 // объект данных о пользователе
-const userInfo = new UserInfo({firstname: profileTitle, jobname: profileSubtitle});
+const userInfo = new UserInfo({name: profileTitle, job: profileSubtitle});
 
 // попап формы пользователя
 const formProfile = new PopupWithForm({
   popup: popupEditProfile,
-  handleFormSubmit: () => {
-    handleProfileSubmit();
+  handleFormSubmit: (data) => {
+    
+    handleProfileSubmit(data);
 
   }
 });
@@ -107,7 +104,7 @@ formProfile.setEventListeners();
 const formCard = new PopupWithForm({
   popup: popupEditElement,
   handleFormSubmit: (item) => {
-
+    
     const newCard = createCard(item);
     defaultCardList.addCardItem(newCard);
   
@@ -130,12 +127,13 @@ const openPopupProfile = () => {
   formProfile.open();
 }
 
-// сохраняет новые данные о пользователе при закрытии попапа)
-const handleProfileSubmit = () => {
+// сохраняет новые данные о пользователе при закрытии попапа
+const handleProfileSubmit = (data) => {
 
-  userInfo.setUserInfo(nameInput.value, jobInput.value);
+  userInfo.setUserInfo(data['name'], data['job']);
   formProfile.close();
 } 
+
 
 
 
