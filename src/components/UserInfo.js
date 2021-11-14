@@ -1,21 +1,25 @@
-const formProfileElement = document.querySelector('.form_profile');
-const nameInput = formProfileElement.querySelector('.form__item_input_name');
-const jobInput = formProfileElement.querySelector('.form__item_input_job');
-
 class UserInfo {
     constructor({firstname, jobname}){
         this._firstname = firstname;
         this._jobname = jobname;
+        // this._name = document.querySelector(this._firstname);
+        // this._job = document.querySelector(this._jobname);
+
     }
 
     getUserInfo() {
-        nameInput.value = this._firstname.textContent;
-        jobInput.value =  this._jobname.textContent;
+        const userData = {};
+
+        userData.userName = this._firstname.textContent;
+        userData.userJob = this._jobname.textContent;
+        return userData;
+        
+        
     }
 
-    setUserInfo() {
-        this._firstname.textContent = nameInput.value;
-        this._jobname.textContent = jobInput.value;
+    setUserInfo( userName, userJob ) {
+        this._firstname.textContent = userName;
+        this._jobname.textContent = userJob;
     }
 
 }

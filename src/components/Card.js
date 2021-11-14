@@ -1,6 +1,3 @@
-import { initialCards } from './cardArrow.js';
-// import { popupToggle, popupImgView} from './index.js';
-
 class Card {
     constructor({data, handleCardClick}, cardSelector){
       this._name = data.name;
