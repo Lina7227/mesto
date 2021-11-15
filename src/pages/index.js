@@ -8,6 +8,8 @@ import {
   elementsTable,
   profileTitle,
   profileSubtitle,
+  inputName,
+  inputJob,
   popupImgView,
   formImgElement,
   formProfileElement
@@ -123,7 +125,9 @@ const openPopupForm = () => {
 
 // открытие формы информации о пользователе
 const openPopupProfile = () => {
-  userInfo.getUserInfo();
+  const currentUserInfo = userInfo.getUserInfo();
+  inputName.value = currentUserInfo.userName;
+  inputJob.value = currentUserInfo.userJob;
   formProfile.open();
 }
 

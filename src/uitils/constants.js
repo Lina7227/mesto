@@ -15,6 +15,8 @@ const editButton = profileInfo.querySelector('.profile__edit-button');
 
 const popupEditElement = document.querySelector('.popup_edit_element'); // попап добавления картинок
 const popupEditProfile = document.querySelector('.popup_edit_profile'); 
+const inputName = popupEditProfile.querySelector('.form__item_input_name');
+const inputJob =popupEditProfile.querySelector('.form__item_input_job');
 
 const addButton = profile.querySelector('.profile__add-button');
 const elementsTable = document.querySelector('.elements__table');
@@ -37,6 +39,8 @@ export {
   elementsTable,
   profileTitle,
   profileSubtitle,
+  inputName,
+  inputJob,
   popupImgView,
   formImgElement,
   formProfileElement
