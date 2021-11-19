@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesto</title>
+<script defer src="main.js"></script><link href="main.css" rel="stylesheet"></head>
+<body>
+
+    <div class="page">
+
+        <header class="header">
+            <img src="bbe2a6eafac19c3d031c.svg" alt="Логотип" class="header__logo">
+        </header>
+
+        <main class="content">
+
+            <section class="profile">
+
+                <img src="bf10f5cc64fa199ad3c5.png" alt="автарка пользователя" class="profile__avatar">
+                <div class="profile__info">
+                    <div class="profile__edit">
+                        <h1 class="profile__title">Жак-Ив Кусто</h1>
+                        <p class="profile__subtitle">Исследователь океана</p>
+                    </div>
+                    
+                    <button type="button" aria-label="открыть попап" class="profile__edit-button"></button> 
+                </div>
+                <button type="button" aria-label="открыть поле добавления фото" class="profile__add-button"></button>
+            </section>  
+
+
+            <section class="elements">
+                <ul class="elements__table">
+                    
+                </ul>
+
+            </section>
+
+        </main>
+
+        <footer class="footer">
+            <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
+        </footer>
+        
+    </div>
+    
+    <div class="popup popup_edit_profile">
+
+        <div class="popup__content popup__content_edit">
+            
+            <button type="button" aria-label="закрыть попап" class="popup__close popup__close_form"></button>
+            
+            <form name="user" class="form form_profile" novalidate>
+                <h2 class="form__title">Редактировать профиль</h2>
+                <fieldset class="form__input-container">
+                    <input 
+                        type="text" 
+                        class="form__item form__item_input_name" 
+                        id="firstname"
+                        name="name"
+                        required
+                        minlength="2"
+                        maxlength="40" 
+                        autocomplete="off"
+                        placeholder="Имя" 
+                        value="Жак-Ив Кусто">
+                    <span id="firstname-error" class="error"></span>
+                    <input 
+                        type="text" 
+                        class="form__item form__item_input_job" 
+                        id="jobname"
+                        name="job"
+                        required
+                        minlength="2"
+                        maxlength="200"
+                        autocomplete="off"
+                        placeholder="введите свою специальность" 
+                        value="Исследователь океана">
+                    <span id="jobname-error" class="error"></span>
+                </fieldset>
+                <fieldset class="form__handler">
+                    <button 
+                        type="submit" 
+                        class="form__button form__button_add">Сохранить
+                    </button>
+                </fieldset>
+
+            </form>
+            
+        </div>
+        
+    </div>
+
+    <div class="popup popup_edit_element">
+
+        <div class="popup__content popup__content_edit">
+            
+            <button type="button" aria-label="закрыть попап" class="popup__close popup__close_form popup__close_element"></button>
+            
+            <form name="image" class="form form_img" novalidate>
+                <h2 class="form__title">Новое место</h2>
+                <fieldset class="form__input-container">
+                    <input 
+                        type="text" 
+                        class="form__item form__item_input_title"
+                        id="title" 
+                        name="name" 
+                        required
+                        minlength="2"
+                        maxlength="30"
+                        autocomplete="off"
+                        placeholder="Название">
+                    <span id="title-error" class="error"></span> 
+                    <input 
+                        type="url" 
+                        class="form__item form__item_input_link"
+                        id="link" 
+                        name="link" 
+                        required
+                        autocomplete="off"
+                        placeholder="Ссылка на картинку">
+                    <span id="link-error" class="error"></span>
+                </fieldset>
+                <fieldset class="form__handler">
+                    <button 
+                        type="submit" 
+                        class="form__button form__button_add">Создать
+                    </button>
+                </fieldset>
+
+            </form>
+            
+        </div>
+        
+    </div>
+
+    <div class="popup popup_images">
+
+        <div class="popup__content popup__content_image">
+            
+            <button type="button" aria-label="закрыть попап" class="popup__close popup__close_image"></button>
+            <figure>
+                <img src="#" alt="" class="popup__image">
+                <figcaption class="popup__title">Image Caption</figcaption>
+            </figure>
+        </div>
+        
+    </div>
+
+
+    <template class="element-template">
+
+        <li class="element">
+            
+            <img src="#" alt="" class="element__image">
+            
+            <button type="button" aria-label="удалить карточку" class="element__remove"></button>
+            <div class="element__description">
+                <h2 class="element__title"></h2>
+                <button type="button" aria-label="оценить фото" class="element__emotion"></button>
+            </div>
+        </li>
+
+    </template>
+    
+
+    
+
+</body>
+</html> 
