@@ -21,11 +21,19 @@
 /*!********************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/profile.css ***!
   \********************************************************************************************************************************************************/
-.profile{display:flex;justify-content:flex-start;margin:0 auto;max-width:880px;padding:0;width:100%}@media (max-width:768px){.profile{max-width:700px}}@media (max-width:600px){.profile{max-width:560px}}@media (max-width:500px){.profile{align-items:center;flex-direction:column;justify-content:center;margin:0;min-width:320px}}
+.profile{display:flex;justify-content:space-between;margin:0 auto;max-width:880px;padding:0;width:100%}@media (max-width:768px){.profile{max-width:700px}}@media (max-width:600px){.profile{max-width:560px}}@media (max-width:500px){.profile{align-items:center;flex-direction:column;justify-content:center;margin:0;min-width:320px}}
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__edit-avatar/profile__edit-avatar.css ***!
+  \***********************************************************************************************************************************************************************************/
+.profile__edit-avatar{border-radius:50%;margin:0;position:relative}.profile__edit-avatar:before{content:"";height:100%;left:0;position:absolute;top:0;width:100%}
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__avatar-button/profile__avatar-button.css ***!
+  \***************************************************************************************************************************************************************************************/
+.profile__avatar-button{background:none;border:0;cursor:pointer;height:100%;left:0;padding:0;position:absolute;top:0;transition:background-color .2s ease;width:100%}.profile__avatar-button:focus,.profile__avatar-button:hover{background-color:rgba(0,0,0,.8);background-image:url(a086f758840ae814ecde.svg);background-position:50%;background-repeat:no-repeat}
 /*!*************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__avatar/profile__avatar.css ***!
   \*************************************************************************************************************************************************************************/
-.profile__avatar{height:120px;-o-object-fit:cover;object-fit:cover;width:120px}
+.profile__avatar{border-radius:50%;cursor:pointer;height:120px;-o-object-fit:cover;object-fit:cover;width:120px}
 /*!*********************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__info/profile__info.css ***!
   \*********************************************************************************************************************************************************************/
@@ -66,6 +74,10 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__remove/element__remove.css ***!
   \*************************************************************************************************************************************************************************/
 .element__remove{background-color:transparent;background-image:url(e3c42771bff3aaa52f76.svg);background-repeat:no-repeat;background-size:100% 100%;border:none;cursor:pointer;height:20px;max-width:18px;position:absolute;right:20px;top:25px;transition:.4s;width:100%}.element__remove:hover{opacity:.6}
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__remove/_visible/element__remove_visible.css ***!
+  \******************************************************************************************************************************************************************************************/
+.element__remove_visible{visibility:visible}
 /*!************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__images/element__image.css ***!
   \************************************************************************************************************************************************************************/
@@ -73,15 +85,23 @@
 /*!***********************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__description/element__description.css ***!
   \***********************************************************************************************************************************************************************************/
-.element__description{display:flex;flex-direction:row;justify-content:space-between;max-width:246px;padding:25px 15px 31px 21px}
+.element__description{display:flex;flex-direction:row;justify-content:space-between;max-width:246px;padding:18px 15px 16px 21px}
 /*!***********************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__title/element__title.css ***!
   \***********************************************************************************************************************************************************************/
 .element__title{color:#000;font-size:24px;font-weight:900;line-height:29px;margin:0;overflow:hidden;padding:0;text-overflow:ellipsis;white-space:nowrap}
+/*!*********************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__rate/element__rate.css ***!
+  \*********************************************************************************************************************************************************************/
+.element__rate{display:flex;flex-direction:column;justify-content:space-between;margin:0;max-width:22px;padding:0;width:100%}
+/*!*************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__number/element__number.css ***!
+  \*************************************************************************************************************************************************************************/
+.element__number{font-size:13px;font-weight:400;line-height:16px;margin:0 auto;padding:0;text-align:center}
 /*!***************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__emotion/element__emotion.css ***!
   \***************************************************************************************************************************************************************************/
-.element__emotion{background-color:inherit;background-image:url(cbed5331d270056562b2.svg);background-size:100% 100%;border:none;cursor:pointer;height:19px;margin-top:6px;max-width:22px;transition:2s;width:100%}.element__emotion:hover{opacity:.5}
+.element__emotion{background-color:inherit;background-image:url(cbed5331d270056562b2.svg);background-size:100% 100%;border:none;cursor:pointer;height:19px;margin:0;max-width:22px;transition:2s;width:100%}.element__emotion:hover{opacity:.5}
 /*!******************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__emotion/_active/element__emotion_active.css ***!
   \******************************************************************************************************************************************************************************************/
@@ -106,6 +126,14 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/popup/__content/_image/popup__content_image.css ***!
   \************************************************************************************************************************************************************************************/
 .popup__content_image{background-color:transparent;margin:0 auto;max-height:75vh;max-width:75vw;padding:0}@media (max-width:600px){.popup__content_image{width:auto}}
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/popup/__content/_avatar/popup__content_avatar.css ***!
+  \**************************************************************************************************************************************************************************************/
+.popup__content_avatar{background-color:#fff;border-radius:10px;max-width:430px;width:100%}@media (max-width:600px){.popup__content_avatar{width:282px}}
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/popup/__content/_remove/popup__content_remove.css ***!
+  \**************************************************************************************************************************************************************************************/
+.popup__content_remove{background-color:#fff;border-radius:10px;max-width:430px;width:100%}@media (max-width:600px){.popup__content_remove{width:282px}}
 /*!*******************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/popup/_opened/popup_opened.css ***!
   \*******************************************************************************************************************************************************************/
