@@ -1,7 +1,8 @@
 class UserInfo {
-    constructor({name, job}){
+    constructor({name, job, avatar}){
         this._name = name;
         this._job = job;
+        this._avatar = avatar;
 
     }
 
@@ -15,9 +16,19 @@ class UserInfo {
         
     }
 
-    setUserInfo( userName, userJob ) {
-        this._name.textContent = userName;
-        this._job.textContent = userJob;
+    setUserInfo( {userName, userJob} ) {
+        if(userName) {
+            this._name.textContent = userName;
+            this._job.textContent = userJob;
+        }
+        
+    }
+
+    setUserAvatar(avatar){
+        if(avatar) {
+            this._avatar.style.backgroundImage = `url(${avatar})`
+        }
+        
     }
 
 }

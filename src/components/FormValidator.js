@@ -28,6 +28,7 @@ class FormValidator {
             const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
             this._hideError(inputElement, errorElement);
         });
+        this._formElement.reset();
     }
 
     //  проверка на ошибку
@@ -62,7 +63,7 @@ class FormValidator {
 
         const isFormValid = this._formElement.checkValidity();
         this._toggleButtonState(isFormValid);
-        // console.log(inputList);
+        
         Array.from(this._inputList ).forEach(inputElement => {
 
             inputElement.addEventListener('input', () => {

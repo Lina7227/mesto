@@ -17,12 +17,15 @@
         <main class="content">
 
             <section class="profile">
-
-                <img src="/src/images/Avatar.png" alt="автарка пользователя" class="profile__avatar">
+                <div class="profile__edit-avatar">
+                    <img src="/src/images/Avatar.png" alt="автарка пользователя" class="profile__avatar">
+                    <button type="button" aria-label="открыть поле добавления аватарки" class="profile__avatar-button"></button>
+                </div>
+                
                 <div class="profile__info">
                     <div class="profile__edit">
-                        <h1 class="profile__title">Жак-Ив Кусто</h1>
-                        <p class="profile__subtitle">Исследователь океана</p>
+                        <h1 class="profile__title"></h1>
+                        <p class="profile__subtitle"></p>
                     </div>
                     
                     <button type="button" aria-label="открыть попап" class="profile__edit-button"></button> 
@@ -136,6 +139,59 @@
         
     </div>
 
+    <div class="popup popup_avatar">
+
+        <div class="popup__content popup__content_avatar">
+            
+            <button type="button" aria-label="закрыть попап" class="popup__close popup__close_form popup__close_avatar"></button>
+            
+            <form name="avatar" class="form form_avatar" novalidate>
+                <h2 class="form__title">Обновить аватар</h2>
+                <fieldset class="form__input-container">
+                    
+                    <input 
+                        type="url" 
+                        class="form__item form__item_input_avatar"
+                        id="avatar" 
+                        name="avatar" 
+                        required
+                        placeholder="Ссылка на аватар">
+                    <span id="avatar-error" class="error"></span>
+                </fieldset>
+                <fieldset class="form__handler">
+                    <button 
+                        type="submit" 
+                        class="form__button form__button_add-avatar">Сохранить
+                    </button>
+                </fieldset>
+
+            </form>
+            
+        </div>
+        
+    </div>
+
+    <div class="popup popup_remove">
+
+        <div class="popup__content popup__content_remove">
+            
+            <button type="button" aria-label="закрыть попап" class="popup__close popup__close_form popup__close_remove"></button>
+            
+            <form name="remove" class="form form_remove" novalidate>
+                <h2 class="form__title">Вы уверены?</h2>
+                <fieldset class="form__handler">
+                    <button 
+                        type="submit" 
+                        class="form__button form__button_add-remove">Да
+                    </button>
+                </fieldset>
+
+            </form>
+            
+        </div>
+        
+    </div>
+
     <div class="popup popup_images">
 
         <div class="popup__content popup__content_image">
@@ -159,7 +215,11 @@
             <button type="button" aria-label="удалить карточку" class="element__remove"></button>
             <div class="element__description">
                 <h2 class="element__title"></h2>
-                <button type="button" aria-label="оценить фото" class="element__emotion"></button>
+                <div class="element__rate">
+                    <button type="button" aria-label="оценить фото" class="element__emotion"></button>
+                    <h3 class="element__number">5</h3>
+                </div>
+                
             </div>
         </li>
 
