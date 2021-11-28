@@ -29,7 +29,7 @@
 /*!***************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__avatar-button/profile__avatar-button.css ***!
   \***************************************************************************************************************************************************************************************/
-.profile__avatar-button{background:none;border:0;cursor:pointer;height:100%;left:0;padding:0;position:absolute;top:0;transition:background-color .2s ease;width:100%}.profile__avatar-button:focus,.profile__avatar-button:hover{background-color:rgba(0,0,0,.8);background-image:url(a086f758840ae814ecde.svg);background-position:50%;background-repeat:no-repeat}
+.profile__avatar-button{background:none;border:0;cursor:pointer;height:100%;left:0;padding:0;position:absolute;top:0;transition:background-color .2s ease;width:100%}.profile__avatar-button:focus,.profile__avatar-button:hover{background-color:rgba(0,0,0,.8);background-image:url(ae1a976ddb506239e9f0.svg);background-position:50%;background-repeat:no-repeat}
 /*!*************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__avatar/profile__avatar.css ***!
   \*************************************************************************************************************************************************************************/
@@ -73,7 +73,7 @@
 /*!*************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__remove/element__remove.css ***!
   \*************************************************************************************************************************************************************************/
-.element__remove{background-color:transparent;background-image:url(e3c42771bff3aaa52f76.svg);background-repeat:no-repeat;background-size:100% 100%;border:none;cursor:pointer;height:20px;max-width:18px;position:absolute;right:20px;top:25px;transition:.4s;width:100%}.element__remove:hover{opacity:.6}
+.element__remove{background-color:transparent;background-image:url(e3c42771bff3aaa52f76.svg);background-repeat:no-repeat;background-size:100% 100%;border:none;cursor:pointer;height:20px;max-width:18px;position:absolute;right:20px;top:25px;transition:.4s;visibility:hidden;width:100%}.element__remove:hover{opacity:.6}
 /*!******************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/element/__remove/_visible/element__remove_visible.css ***!
   \******************************************************************************************************************************************************************************************/
@@ -194,6 +194,10 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/form/__button/_add/form__button_add.css ***!
   \****************************************************************************************************************************************************************************/
 .form__button_add{background-color:#000;border:1px solid #fff;color:#fff;opacity:1}
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/form/__button/_add-remove/form__button_add-remove.css ***!
+  \******************************************************************************************************************************************************************************************/
+.form__button_add-remove{background-color:#000;border:1px solid #fff;color:#fff;margin:7px 0 0;opacity:1}
 /*!************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/form/__button/_invalid/form__button_invalid.css ***!
   \************************************************************************************************************************************************************************************/

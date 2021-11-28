@@ -67,8 +67,7 @@
                         minlength="2"
                         maxlength="40" 
                         autocomplete="off"
-                        placeholder="Имя" 
-                        value="Жак-Ив Кусто">
+                        placeholder="Имя">
                     <span id="firstname-error" class="error"></span>
                     <input 
                         type="text" 
@@ -79,8 +78,7 @@
                         minlength="2"
                         maxlength="200"
                         autocomplete="off"
-                        placeholder="введите свою специальность" 
-                        value="Исследователь океана">
+                        placeholder="введите свою специальность">
                     <span id="jobname-error" class="error"></span>
                 </fieldset>
                 <fieldset class="form__handler">
@@ -155,13 +153,14 @@
                         id="avatar" 
                         name="avatar" 
                         required
+                        autocomplete="off"
                         placeholder="Ссылка на аватар">
                     <span id="avatar-error" class="error"></span>
                 </fieldset>
                 <fieldset class="form__handler">
                     <button 
                         type="submit" 
-                        class="form__button form__button_add-avatar">Сохранить
+                        class="form__button form__button_add">Сохранить
                     </button>
                 </fieldset>
 
