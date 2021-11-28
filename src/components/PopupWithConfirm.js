@@ -24,19 +24,14 @@ class PopupWithConfirm extends Popup{
     }
 
     setGoSubmit(action) {
-        this._SubmitOn = action;
+        this._handleSubmit = action;
     }
 
     _submitHandler(evt) {
         evt.preventDefault();
-        this._SubmitOn();
+        this._handleSubmit();
     }
 
-    close = () => {
-        super.close();
-        this._form.removeEventListener('submit', this._submitHandlerBind);
-        
-    }
 }
 
 export { PopupWithConfirm };
