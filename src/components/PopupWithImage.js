@@ -7,7 +7,7 @@ class PopupWithImage extends Popup{
         this.titlePopup = document.querySelector('.popup__title');
     }
 
-    open({data}) {
+    open(data) {
         super.open();
 
         this.imgPopup.src = data.link;

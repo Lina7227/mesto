@@ -29,7 +29,7 @@ class PopupWithConfirm extends Popup{
 
     _submitHandler(evt) {
         evt.preventDefault();
-        this._SubmitOn;
+        this._SubmitOn();
     }
 
     close = () => {

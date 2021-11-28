@@ -25,10 +25,9 @@ class PopupWithForm extends Popup {
         this._formValues = {};
         // добавляем в этот объект значения всех полей
         this._inputList.forEach(input => {
-            console.log("222");
+   
             this._formValues[input.name] = input.value;
         });
-        console.log("333");
 
         // возвращаем объект значений
         return this._formValues;
@@ -39,7 +38,6 @@ class PopupWithForm extends Popup {
 
         evt.preventDefault();
         const getInputValues = this._getInputValues();
-        console.log("111");
         this.handleFormSubmit(getInputValues);
 
 

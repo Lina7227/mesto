@@ -54,6 +54,7 @@
 @import url('../blocks/form/__handler/form__handler.css');
 @import url('../blocks/form/__button/form__button.css');
 @import url('../blocks/form/__button/_add/form__button_add.css');
+@import url('../blocks/form/__button/_add-remove/form__button_add-remove.css');
 @import url('../blocks/form/__button/_invalid/form__button_invalid.css');
 
 @import url('../blocks/error/error.css');

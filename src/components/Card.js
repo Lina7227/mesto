@@ -3,17 +3,10 @@ class Card {
     this._name = data.name;
     this._link = data.link;
     this._evt = data.evt;
-
     this._likes = data.likes;
-    // console.log(data);
-
     this.id = data._id;
-    // console.log(data.owner._id);
     this._userId = data.owner._id;
     this._myId = data.currentUser;
-    // console.log("userId: ",this._userId);
-    // console.log("my: ",this._myId);
-
     this._likeCountOn = likeCountOn;
     this._likeCountOff = likeCountOff;
     this._cardSelector = cardSelector;
@@ -71,7 +64,7 @@ class Card {
         });
 
         this._cardRemoveButton.addEventListener('click', () => {
-          this.handleDelereCardClick(this);
+          this.handleDelereCardClick(this.id);
       });
 
       this._cardImage.addEventListener('click', () => {
@@ -82,7 +75,6 @@ class Card {
 
   // метод лайков
   _likeButtonElement() {
-  
     return this._likes.some(like => like._id === this._myId);
 
   }
@@ -100,8 +92,8 @@ class Card {
     this.like();
   }
 
-  like = (res) => {
-    this._likes = res.likes;
+  like = (evt) => {
+    this._likes = evt.likes;
     this._likeNumber.textContent = this._likes.length;
     this._likeButton.classList.toggle('element__emotion_active');
   }

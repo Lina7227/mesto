@@ -1,4 +1,3 @@
-import { initialCards } from '../uitils/initialCards.js';
 import {
   config,
   editButton,
@@ -29,12 +28,15 @@ import { Api } from '../components/Api.js';
 import { PopupWithConfirm } from '../components/PopupWithConfirm.js';
 import css from '../pages/index.css';
 
+// экземпляр класса для просмотра картинок
 const popupImg = new PopupWithImage(popupImgView);
 popupImg.setEventListeners();
 
+// экземпляр класса удаления карточек
 const popupConfirm = new PopupWithConfirm(popupRemove);
 popupConfirm.setEventListeners();
 
+// ---------------- запросы ---------------------
 // отправка запросов
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-30',
@@ -52,11 +54,6 @@ Promise.all([api.getInfoUserData(), api.getInitialCards()])
   .then(([dataUser, dataCards]) => {
     userOwnId = dataUser._id;
 
-    console.log(dataCards);
-    console.log(dataUser);
-    // console.log(userOwnId);
-    // console.log("-----------------------------");
-
     // добавлем полученные данные
     userInfo.setUserInfo({
       userName: dataUser.name,
@@ -65,7 +62,6 @@ Promise.all([api.getInfoUserData(), api.getInitialCards()])
 
     userInfo.setUserAvatar(dataUser.avatar);
 
-    
     defaultCardList.renderItems(dataCards); 
 
   })
@@ -137,19 +133,49 @@ const createCard = (data) => {
   return cardElement;
 }
 
+// ---- --------попап добавления карточки -----------------
+
 //валидация формы добавления фото
 const formAddImg = new FormValidator(config, formImgElement);
 formAddImg.enableValidation();
 
+// попап формы фото
+const formCard = new PopupWithForm({
+  popup: popupEditElement,
+  handleFormSubmit: (item) => {
+    formCard.loadingSubmit(true);
+    
+    api.addCards(item)
+      .then((item) => {
+        const newCard = createCard(item);
+        defaultCardList.addCardItem(newCard);
+        formCard.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        
+        formCard.loadingSubmit(false);
+      })
+    
+  }
+  
+});
+formCard.setEventListeners();
+
+// открытие формы добавления фото
+const openPopupForm = () => {
+  formAddImg.resetValidation();
+  formCard.open();
+}
+
+
+// ------------- попап редактирования профиля пользователя -----------------
+
 //валидация формы редактирования профиля
 const formEditProfile = new FormValidator(config, formProfileElement);
 formEditProfile.enableValidation();
-
-
-//валидация формы добавления аватарки
-const formAddAvatar = new FormValidator(config, formAvatarElement);
-formAddAvatar.enableValidation();
-
 
 // объект данных о пользователе
 const userInfo = new UserInfo({
@@ -169,46 +195,6 @@ const formProfile = new PopupWithForm({
 });
 formProfile.setEventListeners();
 
-// попап формы фото
-const formCard = new PopupWithForm({
-  popup: popupEditElement,
-  handleFormSubmit: (item) => {
-    formCard.loadingSubmit(true);
-    
-    api.addCards(item)
-      .then(() => {
-        const newCard = createCard(item);
-        defaultCardList.addCardItem(newCard);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        formCard.close();
-        formCard.loadingSubmit(false);
-      })
-    
-  }
-  
-});
-formCard.setEventListeners();
-
-// попап формы аватара
-const formAvatar = new PopupWithForm({
-  popup: popupAvatar,
-  handleFormSubmit: () => {
-    changeAvatar();
-  }
-});
-formAvatar.setEventListeners();
-
-// открытие формы добавления фото
-const openPopupForm = () => {
-  formAddImg.resetValidation();
-  formCard.open();
-}
-
-
 // открытие формы информации о пользователе
 const openPopupProfile = () => {
   formEditProfile.resetValidation();
@@ -218,13 +204,7 @@ const openPopupProfile = () => {
   formProfile.open();
 }
 
-// сохраняет новые данные о пользователе 
-// const handleProfileSubmit = (data) => {
-
-//   userInfo.setUserInfo(data['name'], data['job']);
-//   formProfile.close();
-// } 
-
+// сохранене новых данных пользователя
 const handleProfileSubmit = (data) => {
 
   formProfile.loadingSubmit(true);
@@ -249,29 +229,45 @@ const handleProfileSubmit = (data) => {
     })
 } 
 
+//  ------------- попап редактирования аватара пользователя -----------------
+//валидация формы добавления аватарки
+const formAddAvatar = new FormValidator(config, formAvatarElement);
+formAddAvatar.enableValidation();
+
+// попап формы аватара
+const formAvatar = new PopupWithForm({
+  popup: popupAvatar,
+  handleFormSubmit: (data) => {
+
+    // сохраняет новые данные после замены аватарки
+    formAvatar.loadingSubmit(true);
+
+    api.setAvatarUser(data)
+      .then((data) => {
+        userInfo.setUserAvatar(data.avatar);
+      })
+      .then(() => {
+        formAvatar.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        formAvatar.loadingSubmit(false);
+      })
+  
+  }
+});
+formAvatar.setEventListeners();
+
 // открытие попапа замены аватарки
 const openPopupAvatar = () => {
   formAddAvatar.resetValidation();
+  
   formAvatar.open();
 }
 
-// сохраняет новые данные после замены аватарки
-const changeAvatar = () => {
-  formAvatar.loadingSubmit(true);
-  api.setAvatarUser(formAvatarElement.value)
-  .then((data) => {
-    userUnfo.setAvatarUser(data.avatar);
-  })
-  .then(() => {
-    formAvatar.close();
-  })
-  .catch((err) => {
-    console.log(err);
-  })
-  .finally(() => {
-    formAvatar.loadingSubmit(false);
-  })
-}
+
 
 // открытие попапа пользователя
 editButton.addEventListener('click', openPopupProfile);

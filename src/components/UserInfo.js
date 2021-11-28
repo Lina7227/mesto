@@ -26,7 +26,7 @@ class UserInfo {
 
     setUserAvatar(avatar){
         if(avatar) {
-            this._avatar.style.backgroundImage = `url(${avatar})`
+            this._avatar.src = avatar;
         }
         
     }
